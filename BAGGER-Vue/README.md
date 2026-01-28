@@ -1,8 +1,5 @@
 # BAGGER-Vue
 
-Rik en ikke (Dilan) in ieder geval willen wel BAGGER website gaan rewriten, hoogstwaarschijnlijk in Vue anders wordt de naam wel veranderd.
-
-
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
