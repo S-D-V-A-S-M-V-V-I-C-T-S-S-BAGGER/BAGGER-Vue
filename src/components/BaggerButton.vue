@@ -24,7 +24,7 @@ defineProps({
     "
     class="border rounded-xl min-w-35 pop-effects"
   >
-    <slot></slot>
+    <slot>🌱</slot>
   </button>
 </template>
 

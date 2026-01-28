@@ -7,4 +7,12 @@
   --color-blue: #62c6c0;
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-brown-light: #ce8d4a;
+  --color-brown-medium: #825a30;
+  --color-brown-dark: #6d461b;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
 }

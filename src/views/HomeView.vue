@@ -4,7 +4,7 @@ import BaggerButton from '@/components/BaggerButton.vue'
 
 <template>
   <h1>Main page</h1>
-  <BaggerButton @click="() => console.log('Hello world!')">Hallo</BaggerButton>
+  <BaggerButton @click="() => console.log('Hello world!')" :is-primary="false"></BaggerButton>
 </template>
 
 <style scoped></style>
