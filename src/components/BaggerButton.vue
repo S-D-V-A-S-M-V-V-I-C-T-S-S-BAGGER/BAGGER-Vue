@@ -4,10 +4,26 @@ const emit = defineEmits(['click'])
 function emitClickEvent() {
   emit('click')
 }
+
+defineProps({
+  isPrimary: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+})
 </script>
 
 <template>
-  <button @click="emitClickEvent" class="border rounded min-w-35 pop-effects">
+  <button
+    @click="emitClickEvent"
+    :class="
+      isPrimary
+        ? 'bg-primary text-black border-primary'
+        : 'bg-secondary text-white border-secondary'
+    "
+    class="border rounded-xl min-w-35 pop-effects"
+  >
     <slot></slot>
   </button>
 </template>
