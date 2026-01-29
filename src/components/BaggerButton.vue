@@ -22,7 +22,7 @@ defineProps({
         ? 'bg-primary text-black border-primary'
         : 'bg-secondary text-white border-secondary'
     "
-    class="border rounded-xl min-w-35 pop-effects"
+    class="border rounded-xl min-w-35 pop-effects px-2 md:px-5 md:py-1"
   >
     <slot>🌱</slot>
   </button>
