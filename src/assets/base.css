@@ -12,9 +12,8 @@
   --color-brown-dark: #6d461b;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
+html, body {
+  width: 100%;
   background: var(--color-brown-dark);
 }
 
