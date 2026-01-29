@@ -17,3 +17,12 @@ body {
   height: 100vh;
   background: var(--color-brown-dark);
 }
+
+h1 {
+  color: var(--color-primary);
+  font-size: xx-large;
+}
+
+p {
+  color: var(--color-blue);
+}
