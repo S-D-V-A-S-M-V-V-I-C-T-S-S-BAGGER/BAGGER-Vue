@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import BaggerButton from '@/components/BaggerButton.vue'
+import BaggerLogo from '@/components/icons/BaggerLogo.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function goToMenu() {
+  router.push('/sitemap')
+}
 </script>
 
 <template>
-  <h1>Main page</h1>
-  <BaggerButton @click="() => console.log('Hello world!')" :is-primary="false"></BaggerButton>
+  <BaggerLogo @buttonPressed="goToMenu" />
 </template>
 
 <style scoped></style>
