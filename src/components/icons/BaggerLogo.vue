@@ -380,8 +380,9 @@ function resetBackground() {
 
 <style scoped>
 #buttonPrimary {
-  transition: all 0.35s;
+  transition: all;
   transform: translateY(0vh);
+  transform-origin: bottom;
 }
 
 #buttonPrimary:hover {
@@ -389,6 +390,6 @@ function resetBackground() {
 }
 
 #buttonPrimary:active {
-  transform: translateY(0.7vh);
+  transform: scale(0.9) translateY(-0.1vh);
 }
 </style>
