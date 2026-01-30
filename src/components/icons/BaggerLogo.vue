@@ -1,13 +1,32 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const emit = defineEmits(['buttonPressed'])
+const backgroundCircleFill = ref('#825a30')
 
 function emitButtonPressed() {
   emit('buttonPressed')
 }
+
+function darkerBackground() {
+  backgroundCircleFill.value = '#42270b'
+}
+
+function resetBackground() {
+  backgroundCircleFill.value = '#825a30'
+}
 </script>
 
 <template>
-  <svg x="0px" y="0px" width="100vw" height="100vw" viewBox="0 0 283.46 283.46" id="svg1161">
+  <svg
+    @mouseup="resetBackground"
+    x="0px"
+    y="0px"
+    width="100vw"
+    height="100vw"
+    viewBox="0 0 283.46 283.46"
+    id="svg1161"
+  >
     <g id="Background">
       <rect
         fill-rule="evenodd"
@@ -17,14 +36,21 @@ function emitButtonPressed() {
         height="283.46"
         id="rect1079"
       />
+      <path fill="#6D461B" d="M0,151.01h283.46v132.45H0" id="path1082" />
+      <g id="g1090">
+        <rect x="133.969" y="151.01" fill="#CE8D4A" width="15.008" height="36.896" id="rect1088" />
+        <circle
+          :fill="backgroundCircleFill"
+          cx="141.475"
+          cy="227.444"
+          class="z-1"
+          r="47.522"
+          id="circle1087"
+        />
+      </g>
     </g>
     <g id="Plant">
-      <path fill="#6D461B" d="M0,151.01h283.46v132.45H0" id="path1082" />
       <path fill="#825A30" d="M0,161.315h283.46V151.01H0V161.315z" id="path1084" />
-      <g id="g1090">
-        <circle fill="#825a30" cx="141.475" cy="227.444" class="z-0" r="47.522" id="circle1087" />
-        <rect x="133.969" y="151.01" fill="#CE8D4A" width="15.008" height="36.896" id="rect1088" />
-      </g>
       <rect x="133.969" y="151.01" fill="#E39F61" width="15.008" height="10.306" id="rect1092" />
       <path
         fill="#538F40"
@@ -84,7 +110,7 @@ function emitButtonPressed() {
         <circle fill="#825A30" cx="169.25" cy="173.36" r="2.816" id="circle1130" />
       </g>
     </g>
-    <g id="buttonPrimary" @click="emitButtonPressed">
+    <g id="buttonPrimary" @mousedown="darkerBackground" @click="emitButtonPressed">
       <circle fill="#CE8D4A" cx="141.475" cy="227.444" r="47.522" id="circleButtonPrimary" />
       <g id="Beer">
         <polygon
@@ -354,11 +380,15 @@ function emitButtonPressed() {
 
 <style scoped>
 #buttonPrimary {
-  transition: all 0.5s;
+  transition: all 0.35s;
   transform: translateY(0vh);
 }
 
 #buttonPrimary:hover {
   transform: translateY(-0.7vh);
+}
+
+#buttonPrimary:active {
+  transform: translateY(0.7vh);
 }
 </style>
