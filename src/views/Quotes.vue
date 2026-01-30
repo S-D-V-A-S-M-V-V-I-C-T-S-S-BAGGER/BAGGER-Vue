@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import BaggerButton from '@/components/BaggerButton.vue';
 import BaggerInput from '@/components/BaggerInput.vue';
-  import { ref, computed } from 'vue';
+  import { ref } from 'vue';
 
   // defining the refs for the quote inputs
   const name = ref('');
@@ -45,7 +45,8 @@ import BaggerInput from '@/components/BaggerInput.vue';
       <h1>BAGGER ZEGT VULGAIRE DINGEN</h1>
     </div>
 
-    <div id="inputs" class="flex flex-col gap-y-2 ">
+    <div id="inputs" class="flex flex-col gap-y-2
+                              md:flex-row md:gap-x-2 md:items-center">
 
       <BaggerInput
         v-model="name"
@@ -86,12 +87,4 @@ import BaggerInput from '@/components/BaggerInput.vue';
 
 </template>
 
-<style scoped>
-
-  #field {
-    background-color: var(--color-blue);
-    min-width: 70vw;
-    padding: 0 1vw;
-  }
-
-</style>
+<style scoped></style>

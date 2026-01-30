@@ -26,7 +26,7 @@
 
 .bagger-input {
  width: 100%;
- height: 4vh;
+ height: 100%;
  padding: 0 1vw;
  border: 2px solid transparent;
  border-radius: 8px;
