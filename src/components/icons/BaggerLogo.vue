@@ -27,6 +27,12 @@ function resetBackground() {
     viewBox="0 0 283.46 283.46"
     id="svg1161"
   >
+    <filter id="si">
+      <feOffset in="SourceAlpha" dx="0" dy="0"></feOffset>
+      <feGaussianBlur stdDeviation="30"></feGaussianBlur>
+      <feComposite in="SourceAlpha" operator="out"></feComposite>
+      <feBlend in2="SourceGraphic"></feBlend>
+    </filter>
     <g id="Background">
       <rect
         fill-rule="evenodd"
@@ -168,7 +174,6 @@ function resetBackground() {
         />
       </g>
     </g>
-
     <g id="Bagger" transform="translate(-3.8268898,-8)">
       <g
         aria-label="Bagger"
@@ -386,10 +391,13 @@ function resetBackground() {
 }
 
 #buttonPrimary:hover {
+  transition-duration: .5s;
   transform: translateY(-0.7vh);
 }
 
 #buttonPrimary:active {
-  transform: scale(0.9) translateY(-0.1vh);
+  transition-duration: 0s;
+  transform: scale(0.85) translateY(-0.4vh);
+  filter: url(#si);
 }
 </style>
