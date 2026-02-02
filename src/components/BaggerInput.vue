@@ -2,7 +2,6 @@
 <script setup lang="ts">
   defineProps({
     modelValue: String,
-    label: String
   });
 
   defineEmits(['update:modelValue']);
@@ -26,7 +25,7 @@
 
 .bagger-input {
  width: 100%;
- height: 100%;
+
  padding: 0 1vw;
  border: 2px solid transparent;
  border-radius: 8px;
