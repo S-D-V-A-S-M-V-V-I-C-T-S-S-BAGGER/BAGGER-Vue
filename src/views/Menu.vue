@@ -13,7 +13,7 @@
                           md:grid md:grid-cols-3 md:grid-rows-3 md:gap-5">
     <h1 class="md:col-start-1 md:col-span-3 md:row-start-1 md:justify-self-center">Links</h1>
     <BaggerButton><router-link :to="{ name: 'home'}">Home/Smoelenboek</router-link></BaggerButton>
-    <BaggerButton>Turflijst</BaggerButton>
+    <BaggerButton><router-link :to="{ name: 'turf'}">Turflijst</router-link></BaggerButton>
     <BaggerButton><router-link :to="{ name: 'quotes'}">Quotes</router-link></BaggerButton>
     <BaggerButton>Declaratie indienen</BaggerButton>
     <BaggerButton>Activiteiten planning</BaggerButton>

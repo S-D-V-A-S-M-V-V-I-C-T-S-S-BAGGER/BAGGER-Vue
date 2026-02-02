@@ -13,8 +13,8 @@ import BaggerInput from '@/components/BaggerInput.vue';
     {"when": "01/21/2026", "who": "Guido", "what": "Het is tijd voor een Burgeroorlog"},
     {"when": "01/21/2026", "who": "Minke, Conner", "what": "\"De provincie waar Lelystad ligt\", \"Overijssel!\""},
     {"when": "01/21/2026", "who": "Conner, Minke & Rik, Conner", "what": "\"Traject van Enschede naar Deventer en als je dan verder gaat, naast Flevoland\", \"Zwolle?\", \"Ja!\""},
-    {"when": "01/21/2026", "who": "Lucas", "what": "De persoon die dit heeft geschreven heeft ontzettende hersenstamkanker.., Sorry dat ging te ver. Hij is dom."},
-    {"when": "01/21/2026", "who": "Guusje", "what": "Mijn huisbaas ruikt naar mijn oma!"}
+    {"when": "01/27/2026", "who": "Lucas", "what": "De persoon die dit heeft geschreven heeft ontzettende hersenstamkanker.., Sorry dat ging te ver. Hij is dom."},
+    {"when": "01/28/2026", "who": "Guusje", "what": "Mijn huisbaas ruikt naar mijn oma!"}
   ]);
 
   const formatDate = (dateString: string) => {
