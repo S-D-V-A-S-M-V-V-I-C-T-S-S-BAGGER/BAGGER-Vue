@@ -22,8 +22,6 @@ function resetBackground() {
     @mouseup="resetBackground"
     x="0px"
     y="0px"
-    width="100vw"
-    height="100vw"
     viewBox="0 0 283.46 283.46"
     id="svg1161"
   >
