@@ -73,11 +73,13 @@ import BaggerInput from '@/components/BaggerInput.vue';
 
     <div v-for="(quote, index) in dummyQuotes" :key="index">
       <div id="date_name" class="text-lg">
-        {{ formatDate(quote.when) }} -
-        {{ quote.who }}
+        <p>
+         {{ formatDate(quote.when) }} -
+         {{ quote.who }}
+        </p>
       </div>
       <div id="sentence">
-        {{ quote.what }}
+       <p> {{ quote.what }} </p>
       </div>
     </div>
 
