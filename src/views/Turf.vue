@@ -4,7 +4,12 @@
   import BaggerButton from '@/components/BaggerButton.vue';
   import TurfLine from '@/components/TurfLine.vue'
 
-  const total = ref();
+  const total = ref(0.00);
+  const lines = ref([{}]);
+
+  function addLine() {
+      lines.value.push({});
+  }
 
 </script>
 
@@ -28,12 +33,12 @@
 
 
     <!-- Grid 2 rows 4 cols -->
-    <div id="turf-line" class="w-[80vw]">
-      <TurfLine />
+    <div id="turf-lines" class="w-[80vw] flex flex-col gap-y-5">
+      <TurfLine v-for="(line, i) in lines" :key="i" />
     </div>
 
     <div id="plus-turf-line">
-      <BaggerButton buttonWidth="w-[40vw]">+</BaggerButton>
+      <BaggerButton buttonWidth="w-[40vw]" @click="addLine">+</BaggerButton>
     </div>
 
     <div id="login">
