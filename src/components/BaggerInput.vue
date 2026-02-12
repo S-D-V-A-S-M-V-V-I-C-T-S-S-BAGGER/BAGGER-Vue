@@ -13,7 +13,7 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: ''
-  }
+  },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -37,7 +37,7 @@ const inputHandler = (event) => {
       :value="modelValue"
       :placeholder="placeholder"
       @input="inputHandler"
-      class="bagger-input"
+      id="bagger-input"
     />
   </div>
 </template>
@@ -45,8 +45,13 @@ const inputHandler = (event) => {
 <style scoped>
 /* From Uiverse.io by alexruix and edited for this project */
 
-.bagger-input {
+div {
+  height: 100%
+}
+
+#bagger-input {
   width: 100%;
+  height: 100%;
   padding: 0 1vw;
   border: 2px solid transparent;
   border-radius: 8px;
@@ -56,23 +61,16 @@ const inputHandler = (event) => {
   transition: .3s ease;
 }
 
-.bagger-input::placeholder {
+#bagger-input::placeholder {
   color: var(--color-brown-medium);
 }
 
-.bagger-input:focus, input:hover {
+#bagger-input:focus, input:hover {
   outline: none;
   border-color: var(--color-secondary);
   background-color: var(--color-primary);
   box-shadow: 0 0 0 4px var(--color-blue);
 }
 
-.icon {
-  position: absolute;
-  left: 1rem;
-  fill: #9e9ea7;
-  width: 1rem;
-  height: 1rem;
-}
 
 </style>

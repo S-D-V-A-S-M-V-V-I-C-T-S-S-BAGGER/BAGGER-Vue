@@ -20,8 +20,8 @@
 
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
-      <BaggerButton buttonWidth="w-[40vw]">Reset</BaggerButton>
-      <BaggerButton buttonWidth="w-[40vw]" >Totaal: {{ total }}</BaggerButton>
+      <BaggerButton customStyling="w-[40vw]">Reset</BaggerButton>
+      <BaggerButton customStyling="w-[40vw]" >Totaal: {{ total }}</BaggerButton>
     </div>
 
     <!-- Grid 2 rows 2 cols -->
@@ -33,16 +33,16 @@
 
 
     <!-- Grid 2 rows 4 cols -->
-    <div id="turf-lines" class="w-[80vw] flex flex-col gap-y-5">
+    <div id="turf-lines" class="w-[80vw] flex flex-col gap-y-5 md:w-[70vw]">
       <TurfLine v-for="(line, i) in lines" :key="i" />
     </div>
 
     <div id="plus-turf-line">
-      <BaggerButton buttonWidth="w-[40vw]" @click="addLine">+</BaggerButton>
+      <BaggerButton customStyling="w-[40vw]" @click="addLine">+</BaggerButton>
     </div>
 
     <div id="login">
-      <BaggerButton buttonWidth="w-[40vw]">Login</BaggerButton>
+      <BaggerButton customStyling="w-[40vw]">Login</BaggerButton>
     </div>
 
   </div>

@@ -11,7 +11,7 @@ defineProps({
     required: false,
     default: true
   },
-  buttonWidth: {
+  customStyling: {
     type: String,
     required: false,
     default: ''
@@ -26,7 +26,7 @@ defineProps({
       isPrimary
         ? 'bg-primary text-black border-primary'
         : 'bg-secondary text-white border-secondary',
-       buttonWidth,
+       customStyling,
        'border rounded-xl pop-effects px-2 md:px-5 md:py-1 '
        ]
     "
