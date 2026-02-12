@@ -11,12 +11,20 @@
       lines.value.push({});
   }
 
+  const login = true;
+  // const login = false;
+
 </script>
 
 <template>
 
   <!-- Flex -->
   <div id="wrapper" class="flex flex-col items-center mx-5 my-5 gap-y-5 md:gap-y-8">
+
+
+    <div v-if="login" id="logout" class="self-end">
+      <BaggerButton :isPrimary=false customStyling="w-[25vw] md:w-[10vw]">Logout</BaggerButton>
+    </div>
 
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
@@ -42,11 +50,11 @@
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="addLine">+</BaggerButton>
     </div>
 
-    <div id="submit">
+    <div v-if="login" id="submit">
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]">Klaar!</BaggerButton>
     </div>
 
-    <div id="login">
+    <div v-else id="login">
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]">Login</BaggerButton>
     </div>
 
