@@ -1,18 +1,36 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+import { ref } from 'vue'
 
-  import BaggerButton from '@/components/BaggerButton.vue';
-  import TurfLine from '@/components/TurfLine.vue'
+import BaggerButton from '@/components/BaggerButton.vue'
+import TurfLine from '@/components/TurfLine.vue'
 
-  const total = ref(0.00);
-  const lines = ref([{}]);
+interface LineItem {
+  amount?: number;
+  price?: number;
+}
 
-  function addLine() {
-      lines.value.push({});
+const total = ref(0)
+const lines = ref<LineItem[]>([{}])
+
+function addLine() {
+  lines.value.push({})
+}
+
+const login = true
+// const login = false;
+
+function totalUpdate(update: {index: number, amount: number, price: number}) {
+  lines.value[update.index] = {
+    amount: update.amount,
+    price: update.price
   }
 
-  const login = true;
-  // const login = false;
+  total.value = lines.value.reduce((sum, line) => {
+    const amount = line.amount || 0;
+    const price = line.price || 0;
+    return sum + (amount * price)
+  }, 0);
+}
 
 </script>
 
@@ -29,7 +47,7 @@
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]">Reset</BaggerButton>
-      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" >Totaal: {{ total }}</BaggerButton>
+      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" >Totaal: €{{ total }}</BaggerButton>
     </div>
 
     <!-- Grid 2 rows 2 cols -->
@@ -43,11 +61,13 @@
     </div>
 
     <div id="turf-lines" class="w-[80vw] flex flex-col gap-y-5 md:w-[40vw]">
-      <TurfLine v-for="(line, i) in lines" :key="i" />
+      <TurfLine v-for="(line, i) in lines" :key="i" :index="i" @turf-line="totalUpdate"
+      />
     </div>
 
     <div id="plus-turf-line">
-      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="addLine">+</BaggerButton>
+      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="addLine">+
+      </BaggerButton>
     </div>
 
     <div v-if="login" id="submit">

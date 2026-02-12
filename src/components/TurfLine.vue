@@ -1,11 +1,22 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, watch} from 'vue'
   import BaggerButton from '@/components/BaggerButton.vue'
   import BaggerInput from '@/components/BaggerInput.vue'
+
+  const emit = defineEmits(['turf-line']);
+  const props = defineProps<{ index: number}>();
 
   const amount = ref(0);
   const item = ref("");
   const price = ref(0);
+
+  watch([amount, price], () => {
+    emit('turf-line', {
+      index: props.index,
+      amount: amount.value,
+      price: price.value
+    })
+  })
 
   function increase() {
     amount.value++;
