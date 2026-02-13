@@ -65,7 +65,8 @@ function submit() {
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset</BaggerButton>
-      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" >Totaal: €{{ total }}</BaggerButton>
+      <div id="total" class="bg-secondary text-white border-secondary border rounded-xl px-2 w-[40vw] text-center
+                               md:w-[15vw] md:px-5 md:py-1">Totaal: € {{ total }}</div>
     </div>
 
     <!-- Grid 2 rows 2 cols -->
