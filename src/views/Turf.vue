@@ -6,11 +6,13 @@ import TurfLine from '@/components/TurfLine.vue'
 
 interface LineItem {
   amount?: number;
+  item?: string;
   price?: number;
 }
 
 const total = ref(0)
 const lines = ref<LineItem[]>([{}])
+const resets = ref(0);
 
 function addLine() {
   lines.value.push({})
@@ -19,9 +21,10 @@ function addLine() {
 const login = true
 // const login = false;
 
-function totalUpdate(update: {index: number, amount: number, price: number}) {
+function totalUpdate(update: {index: number, amount: number, item: string, price: number}) {
   lines.value[update.index] = {
     amount: update.amount,
+    item: update.item,
     price: update.price
   }
 
@@ -30,6 +33,12 @@ function totalUpdate(update: {index: number, amount: number, price: number}) {
     const price = line.price || 0;
     return sum + (amount * price)
   }, 0);
+}
+
+function resetTurf() {
+  lines.value = [{}];
+  total.value = 0;
+  resets.value++;
 }
 
 </script>
@@ -46,7 +55,7 @@ function totalUpdate(update: {index: number, amount: number, price: number}) {
 
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
-      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]">Reset</BaggerButton>
+      <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset</BaggerButton>
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" >Totaal: €{{ total }}</BaggerButton>
     </div>
 
@@ -61,7 +70,7 @@ function totalUpdate(update: {index: number, amount: number, price: number}) {
     </div>
 
     <div id="turf-lines" class="w-[80vw] flex flex-col gap-y-5 md:w-[40vw]">
-      <TurfLine v-for="(line, i) in lines" :key="i" :index="i" @turf-line="totalUpdate"
+      <TurfLine v-for="(line, i) in lines" :key="`${resets}-${i}`" :index="i" @turf-line="totalUpdate"
       />
     </div>
 

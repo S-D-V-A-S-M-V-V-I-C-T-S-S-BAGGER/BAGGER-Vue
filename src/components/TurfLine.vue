@@ -10,10 +10,11 @@
   const item = ref("");
   const price = ref(0);
 
-  watch([amount, price], () => {
+  watch([amount, item, price], () => {
     emit('turf-line', {
       index: props.index,
       amount: amount.value,
+      item: item.value,
       price: price.value
     })
   })
