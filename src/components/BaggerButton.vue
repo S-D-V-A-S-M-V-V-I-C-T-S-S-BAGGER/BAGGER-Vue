@@ -11,18 +11,24 @@ defineProps({
     required: false,
     default: true,
   },
+  customStyling: {
+    type: String,
+    required: false,
+    default: '',
+  },
 })
 </script>
 
 <template>
   <button
     @click="emitClickEvent"
-    :class="
+    :class="[
       isPrimary
         ? 'bg-primary text-black border-primary'
-        : 'bg-secondary text-white border-secondary'
-    "
-    class="border rounded-xl min-w-35 pop-effects px-2 md:px-5 md:py-1"
+        : 'bg-secondary text-white border-secondary',
+      customStyling,
+      'border rounded-xl pop-effects px-2 md:px-5 md:py-1 ',
+    ]"
   >
     <slot>🌱</slot>
   </button>
@@ -33,8 +39,11 @@ button {
   transition: all 0.4s ease-in-out;
   transform: scale(1);
 }
+
 button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
+
+
 </style>

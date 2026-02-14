@@ -1,58 +1,85 @@
-
 <script setup lang="ts">
-  defineProps({
-    modelValue: String,
-    label: String
-  });
+const props = defineProps({
+  modelValue: {
+    type: [String, Number],
+    default: '',
+  },
+  type: {
+    type: String,
+    default: '',
+    validator: (value) => ['text', 'number'].includes(value),
+  },
+  placeholder: {
+    type: String,
+    default: '',
+  },
+})
 
-  defineEmits(['update:modelValue']);
-  defineOptions({ inheritAttrs: false });
+const emit = defineEmits(['update:modelValue'])
 
+const inputHandler = (event) => {
+  const raw = event.target.value
+  if (props.type == 'number') {
+    const num = raw == '' ? '' : parseFloat(raw)
+    emit('update:modelValue', num)
+  } else {
+    emit('update:modelValue', raw)
+  }
+}
 </script>
 
 <template>
   <div>
     <input
+      :type="type"
       :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      v-bind="$attrs"
-      class="bagger-input"
-      />
+      :placeholder="placeholder"
+      @input="inputHandler"
+      id="bagger-input"
+    />
   </div>
 </template>
 
 <style scoped>
-  /* From Uiverse.io by alexruix and edited for this project */
+/* From Uiverse.io by alexruix and edited for this project */
 
-.bagger-input {
- width: 100%;
- height: 100%;
- padding: 0 1vw;
- border: 2px solid transparent;
- border-radius: 8px;
- outline: none;
- background-color: var(--color-blue);
- color: #0d0c22;
- transition: .3s ease;
+div {
+  height: 100%;
 }
 
-.bagger-input::placeholder {
- color: var(--color-black);
+#bagger-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 1vw;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: var(--color-blue);
+  color: #0d0c22;
+  transition: 0.3s ease;
 }
 
-.bagger-input:focus, input:hover {
- outline: none;
- border-color: var(--color-secondary);
- background-color: var(--color-primary);
- box-shadow: 0 0 0 4px var(--color-blue);
+#bagger-input::placeholder {
+  color: var(--color-brown-medium);
 }
 
-.icon {
- position: absolute;
- left: 1rem;
- fill: #9e9ea7;
- width: 1rem;
- height: 1rem;
+#bagger-input:focus,
+input:hover {
+  outline: none;
+  border-color: var(--color-secondary);
+  background-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-blue);
 }
 
+/* Chrome, Safari, Edge, Opera */
+#bagger-input::-webkit-inner-spin-button,
+#bagger-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 </style>
