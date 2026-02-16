@@ -28,6 +28,15 @@ const inputHandler = (event) => {
   }
 }
 
+const inputHandler = (event) => {
+  const raw = event.target.value
+  if (props.type == 'number') {
+    const num = raw == '' ? '' : parseFloat(raw)
+    emit('update:modelValue', num)
+  } else {
+    emit('update:modelValue', raw)
+  }
+}
 </script>
 
 <template>
@@ -58,7 +67,7 @@ div {
   outline: none;
   background-color: var(--color-blue);
   color: #0d0c22;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 #bagger-input::placeholder {
@@ -72,5 +81,15 @@ div {
   box-shadow: 0 0 0 4px var(--color-blue);
 }
 
+/* Chrome, Safari, Edge, Opera */
+#bagger-input::-webkit-inner-spin-button,
+#bagger-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 </style>
