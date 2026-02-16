@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-  import { ref } from 'vue'
+import { computed, ref } from 'vue'
   import Occasion from '@/views/Occasions.vue'
   import BaggerButton from '@/components/BaggerButton.vue'
   import BaggerInput from '@/components/BaggerInput.vue'
@@ -12,7 +12,7 @@
   }
 
   const occasions = ref<Occasion[]>([]);
-  const selected = ref(false);
+  const selected = ref<Occasion>({});
   const popup = ref(false);
 
   const name = ref('');
@@ -43,12 +43,33 @@
     return formatted.charAt(0).toUpperCase() + formatted.slice(1);
   }
 
+  function setSelected(name: string, date: string) {
+    selected.value = {name: name, date: date};
+  }
+
+  // Boolean to keep track is the selected ref is empty or not
+  const emptySelected = computed(() => Object.keys(selected.value).length === 0);
+
+  function sendSelected() {
+    //   TODO: 20260216 - Send the selected activity to the last page
+      console.log("Selected: ");
+      console.log(selected.value);
+  }
+
+  function isSelectedOccasion(name: string, date: string) {
+    // get the current selected
+    const current = selected.value;
+    // compare to the one in the component
+    return (name === current.name && date === current.date);
+  }
+
 </script>
 
 <template>
   <div id="wrapper" class="flex flex-col items-center mx-5 my-5 gap-y-10">
 
-    <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]">Volgende</BaggerButton>
+    <BaggerButton :faded="emptySelected" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]"
+    @click="sendSelected">Volgende</BaggerButton>
 
 
     <div id="occasions" class="flex flex-col items-center gap-y-5">
@@ -61,7 +82,8 @@
       </div>
 
       <div id="list" v-for="(occasion, index) in occasions.values()" :key="index">
-        <OccasionButton customStyling="w-[70vw] md:w-[45vw]">
+        <OccasionButton customStyling="w-[70vw] md:w-[45vw]" @click="setSelected(occasion.name, occasion.date)"
+                  :isSelected="isSelectedOccasion(occasion.name, occasion.date)">
           <p>{{ occasion.name }}</p>
           <p>{{ formatDate(occasion.date) }}</p>
         </OccasionButton>

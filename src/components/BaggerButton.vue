@@ -15,6 +15,11 @@ defineProps({
     type: String,
     required: false,
     default: ''
+  },
+  faded: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 </script>
@@ -26,6 +31,7 @@ defineProps({
       isPrimary
         ? 'bg-primary text-black border-primary'
         : 'bg-secondary text-white border-secondary',
+        faded ? 'bg-secondary-faded text-white-faded border-secondary-faded' : '',
        customStyling,
        'border rounded-xl pop-effects px-2 md:px-5 md:py-1 '
        ]

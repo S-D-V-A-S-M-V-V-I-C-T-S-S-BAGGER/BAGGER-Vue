@@ -11,6 +11,11 @@
       type: String,
       required: false,
       default: ''
+    },
+    isSelected: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   })
 </script>
@@ -20,7 +25,8 @@
     @click="emitClickEvent"
     :class="[
       customStyling,
-      'p-3 items-center rounded-xl'
+      'p-3 items-center rounded-xl',
+      isSelected ? 'border-0 bg-brown-light border-primary' : ''
     ]">
     <slot></slot>
   </button>
