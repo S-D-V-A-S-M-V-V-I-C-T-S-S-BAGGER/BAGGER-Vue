@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { computed, ref } from 'vue'
+import { computed, ref, type UnwrapRef } from 'vue'
   import Occasion from '@/views/Occasions.vue'
   import BaggerButton from '@/components/BaggerButton.vue'
   import BaggerInput from '@/components/BaggerInput.vue'
@@ -43,7 +43,7 @@ import { computed, ref } from 'vue'
     return formatted.charAt(0).toUpperCase() + formatted.slice(1);
   }
 
-  function setSelected(name: string, date: string) {
+  function setSelected(name: UnwrapRef<Occasion['name']> | undefined, date: UnwrapRef<Occasion['date']> | undefined) {
     selected.value = {name: name, date: date};
   }
 
@@ -56,7 +56,7 @@ import { computed, ref } from 'vue'
       console.log(selected.value);
   }
 
-  function isSelectedOccasion(name: string, date: string) {
+  function isSelectedOccasion(name: string | undefined, date: string | undefined) {
     // get the current selected
     const current = selected.value;
     // compare to the one in the component
@@ -85,7 +85,7 @@ import { computed, ref } from 'vue'
         <OccasionButton customStyling="w-[70vw] md:w-[45vw]" @click="setSelected(occasion.name, occasion.date)"
                   :isSelected="isSelectedOccasion(occasion.name, occasion.date)">
           <p>{{ occasion.name }}</p>
-          <p>{{ formatDate(occasion.date) }}</p>
+          <p>{{ formatDate(occasion.date!) }}</p>
         </OccasionButton>
 
       </div>
