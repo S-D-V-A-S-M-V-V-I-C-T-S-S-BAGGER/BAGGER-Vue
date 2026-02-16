@@ -44,7 +44,7 @@ import { computed, ref, type UnwrapRef } from 'vue'
   }
 
   function setSelected(name: UnwrapRef<Occasion['name']> | undefined, date: UnwrapRef<Occasion['date']> | undefined) {
-    selected.value = {name: name, date: date};
+      selected.value = {name: name, date: date};
   }
 
   // Boolean to keep track is the selected ref is empty or not
@@ -102,9 +102,9 @@ import { computed, ref, type UnwrapRef } from 'vue'
       <p id="date-question" class="text-wrap text-center">Op welke datum?</p>
       <BaggerInput v-model="date" type="date" :placeholder="new Date().toLocaleDateString()" />
 
-      <div id="popup-buttons" class="flex flex-row justify-evenly w-[100%]">
-        <BaggerButton :isPrimary=false customStyling="w-[15vw] md:w-[8vw]" @click="popup = false">Annuleer</BaggerButton>
-        <BaggerButton :isPrimary=false customStyling="w-[15vw] md:w-[8vw]" @click="addOccasion(name, date)">Maak aan!</BaggerButton>
+      <div id="popup-buttons" class="flex flex-row gap-x-2 justify-between w-[100%] md:justify-evenly">
+        <BaggerButton :isPrimary=false customStyling="min-w-fit md:w-[8vw]" @click="popup = false">Annuleer</BaggerButton>
+        <BaggerButton :isPrimary=false customStyling="min-w-fit md:w-[8vw]" @click="addOccasion(name, date)">Maak aan!</BaggerButton>
       </div>
     </div>
   </div>

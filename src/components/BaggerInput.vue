@@ -28,15 +28,6 @@ const inputHandler = (event) => {
   }
 }
 
-const inputHandler = (event) => {
-  const raw = event.target.value
-  if (props.type == 'number') {
-    const num = raw == '' ? '' : parseFloat(raw)
-    emit('update:modelValue', num)
-  } else {
-    emit('update:modelValue', raw)
-  }
-}
 </script>
 
 <template>
