@@ -18,6 +18,11 @@ const props = defineProps({
     type: String,
     required: false,
     default: ''
+  },
+  icon: {
+    type: String,
+    required: false,
+    default: ''
   }
 })
 
@@ -36,17 +41,19 @@ const inputHandler = (event) => {
 </script>
 
 <template>
-  <div>
+  <div class="relative flex items-center">
     <input
       :type="type"
       :value="modelValue"
       :placeholder="placeholder"
       :class="[
-        customStyling
+        customStyling,
+        icon ? 'placeholder:pl-5' : ''
       ]"
       @input="inputHandler"
       id="bagger-input"
     />
+    <i v-if="icon" :class="icon + ' absolute left-1 text-brown-medium pointer-events-none'"></i>
   </div>
 </template>
 
