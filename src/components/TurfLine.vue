@@ -44,6 +44,7 @@
           v-model="amount"
           type="number"
           value=""
+          customStyling="w-[100%] h-[100%]"
         />
       </div>
 
@@ -62,6 +63,7 @@
           v-model="item"
           type="text"
           placeholder="Drankje..."
+          customStyling="w-[100%] h-[100%]"
         />
       </div>
 
@@ -72,6 +74,7 @@
           min="0"
           placeholder="price"
           step=".01"
+          customStyling="w-[100%] h-[100%]"
         />
       </div>
 
