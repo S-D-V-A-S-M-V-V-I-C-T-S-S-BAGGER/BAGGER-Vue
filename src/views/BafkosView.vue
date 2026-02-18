@@ -35,7 +35,7 @@ const dummyOptions = (amount: number) => {
 
     <div id="types" class="flex flex-col items-start w-[80vw]">
       <h4>Type</h4>
-      <BaggerDropDown :options="dummyOptions(3)"></BaggerDropDown>
+      <BaggerDropDown width="w-[80vw]" :options="dummyOptions(3)"></BaggerDropDown>
     </div>
 
     <div>start of list</div>
