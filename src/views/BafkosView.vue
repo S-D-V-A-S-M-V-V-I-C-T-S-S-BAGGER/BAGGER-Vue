@@ -35,17 +35,25 @@ onMounted(() => {
     description: 'BAGGER vakantie richting Antwerpen'
   }
   dummy.value.push(bafko3);
+  const bafko4: Bafko = {
+    bafko: 'ZAX',
+    type: 'bijw',
+    description: 'Zwaar A-relaxt'
+  }
+  dummy.value.push(bafko4);
   // also getting the dropdown for options for now
   const all: DropDownOption = {label: "all", value: "all"};
   const znw: DropDownOption = {label: "znw", value: "znw"};
   const spreuk: DropDownOption = {label: "spreuk", value: "spreuk"};
   const volzin: DropDownOption = {label: "volzin", value: "volzin"};
   const tussenwerpsel: DropDownOption = {label: "tussenwerpsel", value: "tussenwerpsel"};
+  const bijw: DropDownOption = {label: "bijw", value: "bijw"};
   options.value.push(all);
   options.value.push(znw);
   options.value.push(spreuk);
   options.value.push(volzin);
   options.value.push(tussenwerpsel);
+  options.value.push(bijw);
 });
 
 
@@ -70,14 +78,16 @@ onMounted(() => {
       <BaggerDropDown width="w-[80vw]" :options="options"></BaggerDropDown>
     </div>
 
-    <div id="list"
-         class="flex flex-col items-center w-[80vw] mt-2"
-         v-for="(bafko, index) in dummy" :key="index">
-      <BafkoBox>
-        <template v-slot:bafko>{{ bafko.bafko }}</template>
-        <template v-slot:type>{{ bafko.type }}</template>
-        <template v-slot:description>{{ bafko.description }}</template>
-      </BafkoBox>
+    <div id="list-wrapper" class="flex flex flex-col mt-2 items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
+      <div id="list-item"
+           class=" w-[100%]"
+           v-for="(bafko, index) in dummy" :key="index">
+        <BafkoBox>
+          <template v-slot:bafko>{{ bafko.bafko }}</template>
+          <template v-slot:type>{{ bafko.type }}</template>
+          <template v-slot:description>{{ bafko.description }}</template>
+        </BafkoBox>
+      </div>
     </div>
 
 
