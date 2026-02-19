@@ -69,12 +69,12 @@ function handleOption(payload: DropDownOption) {
 }
 
 function randomBafko(randomize: boolean) {
-  search.value = '';
+  search.value = ''
   if (randomize) {
-    filtered.value = [];
+    filtered.value = []
     filtered.value.push(bafkos.value[Math.floor(Math.random() * bafkos.value.length)]!)
   } else {
-    filtered.value = [];
+    filtered.value = []
     filtered.value = bafkos.value
   }
 }
@@ -94,7 +94,7 @@ watch(search, (current) => {
 </script>
 
 <template>
-  <div id="wrapper" class="flex flex-col gap-y-4 items-center mt-3 mx-5">
+  <div id="wrapper" class="flex flex-col gap-y-4 items-center mt-3 mx-5 md:gap-y-5">
 
     <div id="title" class="text-wrap text-center">
       <h1>BAFKO's</h1>
@@ -102,25 +102,32 @@ watch(search, (current) => {
         Ander Woord Te Zetten</h3>
     </div>
 
-    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(true)">Willekeurige BAFKO
-    </BaggerButton>
+    <div class="flex flex-col gap-y-4 items-center
+                  md:w-[80vw] md:flex-row md:justify-around">
+      <BaggerButton customStyling="w-[80vw] h-fit md:w-[15vw]" @click="randomBafko(true)"><i class="pi pi-question"></i> Willekeurige BAFKO
+      </BaggerButton>
 
-    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(false)">Reset Lijst
-    </BaggerButton>
+      <BaggerButton customStyling="w-[80vw] h-fit md:w-[10vw]" @click="randomBafko(false)"><i class="pi pi-sync"></i> Reset Lijst
+      </BaggerButton>
 
-    <BaggerInput type="text" placeholder="Zoek voor bafko of bescrhijving" customStyling="w-[80vw]"
-                 icon="pi pi-search" v-model="search"></BaggerInput>
+      <BaggerInput type="text" placeholder="Zoek voor bafko of beschrijving"
+                   customStyling="w-[80vw] md:w-[30vw]"
+                   icon="pi pi-search" v-model="search"></BaggerInput>
 
-    <div id="types" class="flex flex-col items-start w-[80vw]">
-      <h4>Type</h4>
-      <BaggerDropDown width="w-[80vw]" :options="options"
-                      @send-option="handleOption"></BaggerDropDown>
+      <div id="types" class="flex flex-col items-start w-[80vw]
+                              md:w-[20vw] md:flex-row md:items-center md:gap-x-3">
+        <h4>Type:</h4>
+        <BaggerDropDown width="w-[80vw] md:w-[15vw]" :options="options"
+                        @send-option="handleOption"></BaggerDropDown>
+      </div>
+
     </div>
 
     <div id="list-wrapper"
-         class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
+         class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto
+                md:w-[90vw] md:h-[55vh] md:flex-row md:gap-x-5 md:flex-wrap md:items-start justify-center">
       <div id="list-item"
-           class="w-[100%]"
+           class="w-[100%] h-[15vh] md:w-[20vw] md:h-[25vh]"
            v-for="(bafko, index) in filtered" :key="index">
         <BafkoBox>
           <template v-slot:bafko>{{ bafko.bafko }}</template>

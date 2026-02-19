@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <div id="box_wrapper" class="w-[100%] h-[15vh] flex flex-col pt-5 px-5 bg-secondary border-primary rounded-xl gap-y-3">
+  <div id="box_wrapper" class="w-[100%] h-[100%] flex flex-col pt-5 px-5 bg-secondary border-primary rounded-xl gap-y-3
+                                md:gap-y-7 md:px-5">
 
     <div id="title" class="w-[100%] flex flex-row justify-between item-center">
       <h2 class="text-shadow-md font-bold"><slot name="bafko"></slot></h2>
