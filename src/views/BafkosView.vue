@@ -17,32 +17,34 @@ interface Bafko {
   description: string;
 }
 
-const dummy = ref<Bafko[]>([])
+const bafkos = ref<Bafko[]>([]);
 const options = ref<DropDownOption[]>([]);
+const optionFilter = ref('');
+const filtered = ref<Bafko[]>([]);
 
 onMounted(() => {
   const bafko1: Bafko = { bafko: 'BAfko', type: 'znw', description: 'BAGGER Afkorting (Commissie)' }
-  dummy.value.push(bafko1)
+  bafkos.value.push(bafko1)
   const bafko2: Bafko = {
     bafko: 'GGGOEEEL',
     type: 'spreuk',
     description: 'Goud Geel Grolschjes Openen, Echt Echt Echt Lekker'
   }
-  dummy.value.push(bafko2)
+  bafkos.value.push(bafko2)
   const bafko3: Bafko = {
     bafko: 'Bavaria',
     type: 'volzin',
     description: 'BAGGER vakantie richting Antwerpen'
   }
-  dummy.value.push(bafko3);
+  bafkos.value.push(bafko3);
   const bafko4: Bafko = {
     bafko: 'ZAX',
     type: 'bijw',
     description: 'Zwaar A-relaxt'
   }
-  dummy.value.push(bafko4);
+  bafkos.value.push(bafko4);
   // also getting the dropdown for options for now
-  const all: DropDownOption = {label: "all", value: "all"};
+  const all: DropDownOption = {label: "Geen", value: "Geen"};
   const znw: DropDownOption = {label: "znw", value: "znw"};
   const spreuk: DropDownOption = {label: "spreuk", value: "spreuk"};
   const volzin: DropDownOption = {label: "volzin", value: "volzin"};
@@ -55,6 +57,18 @@ onMounted(() => {
   options.value.push(tussenwerpsel);
   options.value.push(bijw);
 });
+
+function handleOption(payload: DropDownOption) {
+  optionFilter.value = payload.value;
+  console.log(optionFilter.value);
+  // if option is all return the whole list
+  if (optionFilter.value === "Geen" || optionFilter.value === '') {
+    filtered.value = bafkos.value;
+  } else {
+    // update the bafko list to only have the ones with the given optionFilter
+    filtered.value = bafkos.value.filter((option) => option.type === optionFilter.value);
+  }
+}
 
 
 </script>
@@ -75,13 +89,13 @@ onMounted(() => {
 
     <div id="types" class="flex flex-col items-start w-[80vw]">
       <h4>Type</h4>
-      <BaggerDropDown width="w-[80vw]" :options="options"></BaggerDropDown>
+      <BaggerDropDown width="w-[80vw]" :options="options" @send-option="handleOption"></BaggerDropDown>
     </div>
 
     <div id="list-wrapper" class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
       <div id="list-item"
            class="w-[100%]"
-           v-for="(bafko, index) in dummy" :key="index">
+           v-for="(bafko, index) in filtered" :key="index">
         <BafkoBox>
           <template v-slot:bafko>{{ bafko.bafko }}</template>
           <template v-slot:type>{{ bafko.type }}</template>

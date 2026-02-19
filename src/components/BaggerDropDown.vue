@@ -14,7 +14,9 @@ const props = defineProps({
     required: true,
     default: ''
   }
-})
+});
+
+const emit = defineEmits(['send-option']);
 
 
 const selected = ref(props.options[0])
@@ -28,9 +30,9 @@ function toggleDropDown() {
 }
 
 function selectOption(option: DropDownOption) {
-  selected.value = option
-  isOpen.value = false
-  console.log(selected.value)
+  selected.value = option;
+  isOpen.value = false;
+  emit('send-option', option);
 }
 
 function handleClickOutside(event) {
