@@ -70,11 +70,21 @@ function handleOption(payload: DropDownOption) {
   }
 }
 
+function randomBafko(randomize: boolean) {
+  if (randomize) {
+    filtered.value = [];
+    filtered.value.push(bafkos.value[Math.floor(Math.random() * bafkos.value.length)]!);
+  } else {
+    filtered.value = [];
+    filtered.value = bafkos.value;
+  }
+}
+
 
 </script>
 
 <template>
-  <div id="wrapper" class="flex flex-col gap-y-5 items-center mt-5 mx-5">
+  <div id="wrapper" class="flex flex-col gap-y-4 items-center mt-3 mx-5">
 
     <div id="title" class="text-wrap text-center">
       <h1>BAFKO's</h1>
@@ -82,7 +92,9 @@ function handleOption(payload: DropDownOption) {
         Ander Woord Te Zetten</h3>
     </div>
 
-    <BaggerButton customStyling="w-[80vw] h-[5vh]">Willekeurige BAFKO</BaggerButton>
+    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(true)">Willekeurige BAFKO</BaggerButton>
+
+    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(false)">Reset Lijst</BaggerButton>
 
     <BaggerInput type="text" placeholder="Zoek voor bafko of bescrhijving" customStyling="w-[80vw]"
                  icon="pi pi-search"></BaggerInput>
