@@ -71,8 +71,10 @@ function handleOption(payload: DropDownOption) {
 function randomBafko(randomize: boolean) {
   search.value = '';
   if (randomize) {
+    filtered.value = [];
     filtered.value.push(bafkos.value[Math.floor(Math.random() * bafkos.value.length)]!)
   } else {
+    filtered.value = [];
     filtered.value = bafkos.value
   }
 }
