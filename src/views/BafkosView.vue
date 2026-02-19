@@ -60,7 +60,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="wrapper" class="flex flex-col gap-y-5 items-center mt-10 mx-5">
+  <div id="wrapper" class="flex flex-col gap-y-5 items-center mt-5 mx-5">
 
     <div id="title" class="text-wrap text-center">
       <h1>BAFKO's</h1>
@@ -78,9 +78,9 @@ onMounted(() => {
       <BaggerDropDown width="w-[80vw]" :options="options"></BaggerDropDown>
     </div>
 
-    <div id="list-wrapper" class="flex flex flex-col mt-2 items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
+    <div id="list-wrapper" class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
       <div id="list-item"
-           class=" w-[100%]"
+           class="w-[100%]"
            v-for="(bafko, index) in dummy" :key="index">
         <BafkoBox>
           <template v-slot:bafko>{{ bafko.bafko }}</template>
@@ -90,10 +90,14 @@ onMounted(() => {
       </div>
     </div>
 
-
+    <div id="footer" class="flex flex-row w-[80vw] max-h-fit items-center justify-evenly pt-5 border-t-1 border-primary ">
+      <BaggerButton><router-link :to="{ name: 'home'}"><i class="pi pi-home"></i></router-link></BaggerButton>
+      <BaggerButton><router-link :to="{ name: 'sitemap'}"><i class="pi pi-bars"></i></router-link></BaggerButton>
+      <BaggerButton>LOGOUT</BaggerButton>
+    </div>
   </div>
 
-  <div>footer with home and sitemap button</div>
+
 
 </template>
 
