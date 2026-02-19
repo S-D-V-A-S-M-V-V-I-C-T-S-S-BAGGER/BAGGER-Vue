@@ -4,7 +4,7 @@ import BaggerButton from '@/components/BaggerButton.vue'
 import BaggerInput from '@/components/BaggerInput.vue'
 import BaggerDropDown from '@/components/BaggerDropDown.vue'
 import BafkoBox from '@/components/BafkoBox.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 export interface DropDownOption {
   label: string;
@@ -17,10 +17,11 @@ interface Bafko {
   description: string;
 }
 
-const bafkos = ref<Bafko[]>([]);
-const options = ref<DropDownOption[]>([]);
-const optionFilter = ref('');
-const filtered = ref<Bafko[]>([]);
+const bafkos = ref<Bafko[]>([])
+const options = ref<DropDownOption[]>([])
+const optionFilter = ref('')
+const filtered = ref<Bafko[]>([])
+const search = ref('')
 
 onMounted(() => {
   const bafko1: Bafko = { bafko: 'BAfko', type: 'znw', description: 'BAGGER Afkorting (Commissie)' }
@@ -36,50 +37,57 @@ onMounted(() => {
     type: 'volzin',
     description: 'BAGGER vakantie richting Antwerpen'
   }
-  bafkos.value.push(bafko3);
+  bafkos.value.push(bafko3)
   const bafko4: Bafko = {
     bafko: 'ZAX',
     type: 'bijw',
     description: 'Zwaar A-relaxt'
   }
-  bafkos.value.push(bafko4);
+  bafkos.value.push(bafko4)
   // also getting the dropdown for options for now
-  const all: DropDownOption = {label: "Geen", value: "Geen"};
-  const znw: DropDownOption = {label: "znw", value: "znw"};
-  const spreuk: DropDownOption = {label: "spreuk", value: "spreuk"};
-  const volzin: DropDownOption = {label: "volzin", value: "volzin"};
-  const tussenwerpsel: DropDownOption = {label: "tussenwerpsel", value: "tussenwerpsel"};
-  const bijw: DropDownOption = {label: "bijw", value: "bijw"};
-  options.value.push(all);
-  options.value.push(znw);
-  options.value.push(spreuk);
-  options.value.push(volzin);
-  options.value.push(tussenwerpsel);
-  options.value.push(bijw);
-});
+  const all: DropDownOption = { label: 'Geen', value: 'Geen' }
+  const znw: DropDownOption = { label: 'znw', value: 'znw' }
+  const spreuk: DropDownOption = { label: 'spreuk', value: 'spreuk' }
+  const volzin: DropDownOption = { label: 'volzin', value: 'volzin' }
+  const tussenwerpsel: DropDownOption = { label: 'tussenwerpsel', value: 'tussenwerpsel' }
+  const bijw: DropDownOption = { label: 'bijw', value: 'bijw' }
+  options.value.push(all, znw, spreuk, volzin, tussenwerpsel, bijw)
+
+  filtered.value = bafkos.value
+})
 
 function handleOption(payload: DropDownOption) {
-  optionFilter.value = payload.value;
-  console.log(optionFilter.value);
+  optionFilter.value = payload.value
+  console.log(optionFilter.value)
   // if option is all return the whole list
-  if (optionFilter.value === "Geen" || optionFilter.value === '') {
-    filtered.value = bafkos.value;
+  if (optionFilter.value === 'Geen' || optionFilter.value === '') {
+    filtered.value = bafkos.value
   } else {
     // update the bafko list to only have the ones with the given optionFilter
-    filtered.value = bafkos.value.filter((option) => option.type === optionFilter.value);
+    filtered.value = bafkos.value.filter((option) => option.type === optionFilter.value)
   }
 }
 
 function randomBafko(randomize: boolean) {
+  search.value = '';
   if (randomize) {
-    filtered.value = [];
-    filtered.value.push(bafkos.value[Math.floor(Math.random() * bafkos.value.length)]!);
+    filtered.value.push(bafkos.value[Math.floor(Math.random() * bafkos.value.length)]!)
   } else {
-    filtered.value = [];
-    filtered.value = bafkos.value;
+    filtered.value = bafkos.value
   }
 }
 
+watch(search, (current) => {
+  if (current.trim() === '') {
+    filtered.value = bafkos.value
+  } else {
+    const query = current.toLowerCase()
+    filtered.value = bafkos.value.filter((item) =>
+      item.bafko.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query)
+    )
+  }
+})
 
 </script>
 
@@ -92,19 +100,23 @@ function randomBafko(randomize: boolean) {
         Ander Woord Te Zetten</h3>
     </div>
 
-    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(true)">Willekeurige BAFKO</BaggerButton>
+    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(true)">Willekeurige BAFKO
+    </BaggerButton>
 
-    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(false)">Reset Lijst</BaggerButton>
+    <BaggerButton customStyling="w-[80vw] h-fit" @click="randomBafko(false)">Reset Lijst
+    </BaggerButton>
 
     <BaggerInput type="text" placeholder="Zoek voor bafko of bescrhijving" customStyling="w-[80vw]"
-                 icon="pi pi-search"></BaggerInput>
+                 icon="pi pi-search" v-model="search"></BaggerInput>
 
     <div id="types" class="flex flex-col items-start w-[80vw]">
       <h4>Type</h4>
-      <BaggerDropDown width="w-[80vw]" :options="options" @send-option="handleOption"></BaggerDropDown>
+      <BaggerDropDown width="w-[80vw]" :options="options"
+                      @send-option="handleOption"></BaggerDropDown>
     </div>
 
-    <div id="list-wrapper" class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
+    <div id="list-wrapper"
+         class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto">
       <div id="list-item"
            class="w-[100%]"
            v-for="(bafko, index) in filtered" :key="index">
@@ -116,13 +128,17 @@ function randomBafko(randomize: boolean) {
       </div>
     </div>
 
-    <div id="footer" class="flex flex-row w-[80vw] max-h-fit items-center justify-evenly pt-5 border-t-1 border-primary ">
-      <BaggerButton><router-link :to="{ name: 'home'}"><i class="pi pi-home"></i></router-link></BaggerButton>
-      <BaggerButton><router-link :to="{ name: 'sitemap'}"><i class="pi pi-bars"></i></router-link></BaggerButton>
+    <div id="footer"
+         class="flex flex-row w-[80vw] max-h-fit items-center justify-evenly pt-5 border-t-1 border-primary ">
+      <BaggerButton>
+        <router-link :to="{ name: 'home'}"><i class="pi pi-home"></i></router-link>
+      </BaggerButton>
+      <BaggerButton>
+        <router-link :to="{ name: 'sitemap'}"><i class="pi pi-bars"></i></router-link>
+      </BaggerButton>
       <BaggerButton>LOGOUT</BaggerButton>
     </div>
   </div>
-
 
 
 </template>

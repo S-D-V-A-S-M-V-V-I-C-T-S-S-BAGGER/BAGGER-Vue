@@ -48,7 +48,7 @@ const inputHandler = (event) => {
       :placeholder="placeholder"
       :class="[
         customStyling,
-        icon ? 'placeholder:pl-5' : ''
+        icon ? 'pl-7 pr-[1vw]' : 'px-[1vw]'
       ]"
       @input="inputHandler"
       id="bagger-input"
@@ -65,7 +65,6 @@ div {
 }
 
 #bagger-input {
-  padding: 0 1vw;
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
