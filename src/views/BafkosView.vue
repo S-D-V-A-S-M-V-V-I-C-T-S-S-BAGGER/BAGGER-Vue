@@ -125,9 +125,9 @@ watch(search, (current) => {
 
     <div id="list-wrapper"
          class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto
-                md:w-[90vw] md:h-[55vh] md:flex-row md:gap-x-5 md:flex-wrap md:items-start justify-center">
+                md:w-[90vw] md:h-[55vh] md:flex-row md:gap-x-5 md:flex-wrap md:items-start md:justify-center">
       <div id="list-item"
-           class="w-[100%] h-[15vh] md:w-[20vw] md:h-[25vh]"
+           class="w-[100%] md:w-[20vw]"
            v-for="(bafko, index) in filtered" :key="index">
         <BafkoBox>
           <template v-slot:bafko>{{ bafko.bafko }}</template>
