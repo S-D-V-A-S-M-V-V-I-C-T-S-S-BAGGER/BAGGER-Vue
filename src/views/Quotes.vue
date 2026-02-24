@@ -1,45 +1,65 @@
 <script setup lang="ts">
-  import BaggerButton from '@/components/BaggerButton.vue';
-import BaggerInput from '@/components/BaggerInput.vue';
-  import { ref } from 'vue';
+import BaggerButton from '@/components/BaggerButton.vue'
+import BaggerInput from '@/components/BaggerInput.vue'
+import { ref } from 'vue'
+import BaggerFooter from '@/components/BaggerFooter.vue'
 
-  // defining the refs for the quote inputs
-  const name = ref('');
-  const quote = ref('');
-  const date = ref('');
+// defining the refs for the quote inputs
+const name = ref('')
+const quote = ref('')
+const date = ref('')
 
-  // some dummy data for the quotes, to check the layout. Will be changed to API calls to the spreadsheet in the Drive
-  const dummyQuotes = ref([
-    {"when": "01/21/2026", "who": "Guido", "what": "Het is tijd voor een Burgeroorlog"},
-    {"when": "01/21/2026", "who": "Minke, Conner", "what": "\"De provincie waar Lelystad ligt\", \"Overijssel!\""},
-    {"when": "01/21/2026", "who": "Conner, Minke & Rik, Conner", "what": "\"Traject van Enschede naar Deventer en als je dan verder gaat, naast Flevoland\", \"Zwolle?\", \"Ja!\""},
-    {"when": "01/27/2026", "who": "Lucas", "what": "De persoon die dit heeft geschreven heeft ontzettende hersenstamkanker.., Sorry dat ging te ver. Hij is dom."},
-    {"when": "01/28/2026", "who": "Guusje", "what": "Mijn huisbaas ruikt naar mijn oma!"}
-  ]);
+// some dummy data for the quotes, to check the layout. Will be changed to API calls to the spreadsheet in the Drive
+const dummyQuotes = ref([
+  { 'when': '01/21/2026', 'who': 'Guido', 'what': 'Het is tijd voor een Burgeroorlog' },
+  {
+    'when': '01/21/2026',
+    'who': 'Minke, Conner',
+    'what': '"De provincie waar Lelystad ligt", "Overijssel!"'
+  },
+  {
+    'when': '01/21/2026',
+    'who': 'Conner, Minke & Rik, Conner',
+    'what': '"Traject van Enschede naar Deventer en als je dan verder gaat, naast Flevoland", "Zwolle?", "Ja!"'
+  },
+  {
+    'when': '01/27/2026',
+    'who': 'Lucas',
+    'what': 'De persoon die dit heeft geschreven heeft ontzettende hersenstamkanker.., Sorry dat ging te ver. Hij is dom.'
+  },
+  { 'when': '01/28/2026', 'who': 'Guusje', 'what': 'Mijn huisbaas ruikt naar mijn oma!' },
+  { 'when': '01/28/2026', 'who': 'Guusje', 'what': 'Mijn huisbaas ruikt naar mijn oma!' },
+  { 'when': '01/28/2026', 'who': 'Guusje', 'what': 'Mijn huisbaas ruikt naar mijn oma!' },
+  { 'when': '01/28/2026', 'who': 'Guusje', 'what': 'Mijn huisbaas ruikt naar mijn oma!' },
+  { 'when': '01/28/2026', 'who': 'Guusje', 'what': 'Mijn huisbaas ruikt naar mijn oma!' },
+  {
+    'when': '01/27/2026',
+    'who': 'Lucas',
+    'what': 'De persoon die dit heeft geschreven heeft ontzettende hersenstamkanker.., Sorry dat ging te ver. Hij is dom.'
+  },
+])
 
-  const formatDate = (dateString: string) => {
-    if (!dateString) return "Geen datum =(";
+const formatDate = (dateString: string) => {
+  if (!dateString) return 'Geen datum =('
 
-    const date = new Date(dateString);
+  const date = new Date(dateString)
 
-    const formatted = new Intl.DateTimeFormat('nl-NL', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    }).format(date);
+  const formatted = new Intl.DateTimeFormat('nl-NL', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(date)
 
-    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-  }
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1)
+}
 
 
 </script>
 
 <template>
 
-  <div id="wrapper" class="flex flex-col items-center mx-5 my-5 gap-y-5 text-center">
-
-    <BaggerButton>LOGOUT</BaggerButton>
+  <div id="wrapper" class="flex flex-col items-center mx-5 mt-5 gap-y-5 text-center">
 
     <div id="title" class="w-[70vw]">
       <h1>BAGGER ZEGT VULGAIRE DINGEN</h1>
@@ -52,16 +72,19 @@ import BaggerInput from '@/components/BaggerInput.vue';
         v-model="name"
         type="text"
         placeholder="Naam"
+        customStyling="w-full"
       />
-       <BaggerInput
+      <BaggerInput
         v-model="quote"
         type="text"
         placeholder="Quote"
+        customStyling="w-full"
       />
-       <BaggerInput
+      <BaggerInput
         v-model="date"
         type="date"
         :placeholder="new Date().toLocaleDateString()"
+        customStyling="w-full"
       />
       <BaggerButton>Nieuwe quote toevoegen!</BaggerButton>
 
@@ -71,20 +94,31 @@ import BaggerInput from '@/components/BaggerInput.vue';
       <h2>we kramen een hoop troep uit, zoals:</h2>
     </div>
 
-    <div v-for="(quote, index) in dummyQuotes" :key="index">
-      <div id="date_name" class="text-lg">
-        <p>
-         {{ formatDate(quote.when) }} -
-         {{ quote.who }}
-        </p>
-      </div>
-      <div id="sentence">
-       <p> {{ quote.what }} </p>
+    <div id="quotes-wrapper" class="w-[80vw] h-[45vh] flex flex-col items-center gap-y-5 overflow-y-auto
+                                    md:w-[45vw] md:h-[65vh] md:px-5">
+
+      <div v-for="(quote, index) in dummyQuotes" :key="index">
+
+        <div id="date_name" class="text-lg">
+
+          <p>
+            {{ formatDate(quote.when) }} -
+            {{ quote.who }}
+          </p>
+        </div>
+
+        <div id="sentence">
+          <p> {{ quote.what }} </p>
+        </div>
       </div>
     </div>
 
   </div>
 
+
+  <div id="footer" class="flex flex-col items-center w-full fixed bottom-0 pb-[5vh]">
+    <BaggerFooter />
+  </div>
 
 
 </template>
