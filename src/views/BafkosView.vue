@@ -4,6 +4,7 @@ import BaggerButton from '@/components/BaggerButton.vue'
 import BaggerInput from '@/components/BaggerInput.vue'
 import BaggerDropDown from '@/components/BaggerDropDown.vue'
 import BafkoBox from '@/components/BafkoBox.vue'
+import BaggerFooter from '@/components/BaggerFooter.vue'
 import { onMounted, ref, watch } from 'vue'
 
 export interface DropDownOption {
@@ -137,16 +138,7 @@ watch(search, (current) => {
       </div>
     </div>
 
-    <div id="footer"
-         class="flex flex-row w-[80vw] max-h-fit items-center justify-evenly pt-5 border-t-1 border-primary ">
-      <BaggerButton>
-        <router-link :to="{ name: 'home'}"><i class="pi pi-home"></i></router-link>
-      </BaggerButton>
-      <BaggerButton>
-        <router-link :to="{ name: 'sitemap'}"><i class="pi pi-bars"></i></router-link>
-      </BaggerButton>
-      <BaggerButton>LOGOUT</BaggerButton>
-    </div>
+    <BaggerFooter />
   </div>
 
 
