@@ -5,6 +5,7 @@ import Quotes from '@/views/Quotes.vue'
 import Turf from '@/views/Turf.vue'
 import Occasions from '@/views/Occasions.vue'
 import BafkosView from '@/views/BafkosView.vue'
+import TurfCheckView from '@/views/TurfCheckView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/gelegenheid',
       name: 'gelegenheid',
       component: Occasions,
+    },
+    {
+      path: '/turf-check',
+      name: '/turf-check',
+      component: TurfCheckView
     },
     {
       path: '/bafkos',
