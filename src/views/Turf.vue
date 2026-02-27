@@ -63,7 +63,7 @@ onMounted(() => {
     <div id="total" class="flex flex-col gap-y-1">
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset
       </BaggerButton>
-      <div id="total" class="bg-secondary text-white border-secondary border rounded-xl px-2 w-[40vw] text-center
+      <div id="total" class="bg-secondary text-white border-secondary border rounded-xl px-2 py-1 w-[40vw] text-center
                                md:w-[15vw] md:px-5 md:py-1">Totaal: € {{ turfStore.total }}
       </div>
     </div>
@@ -78,10 +78,10 @@ onMounted(() => {
       </div>
     </div>
 
-    <div id="lines-wrapper" class="w-[80vw] h-[65vh] flex flex-col items-center gap-y-5 overflow-y-auto
-                                    md:w-[45vw] md:h-[60vh]">
+    <div id="lines-wrapper" class="w-[80vw] h-[60vh] flex flex-col items-center gap-y-5 overflow-y-auto
+                                    md:w-[45vw] md:h-[50vh]">
 
-      <div id="turf-lines" class="w-full flex flex-col gap-y-5 ">
+      <div id="turf-lines" class="w-full flex flex-col gap-y-5 mt-1">
         <TurfLine v-for="(line, i) in turfStore.lines" :key="`${resets}-${i}`" :index="i"
                   @turf-line="totalUpdate"
         />

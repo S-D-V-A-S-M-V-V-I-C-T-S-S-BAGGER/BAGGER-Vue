@@ -119,7 +119,7 @@ function isSelectedOccasion(name: string | undefined, date: string | undefined) 
       <BaggerInput v-model="date" type="date" :placeholder="new Date().toLocaleDateString()" />
 
       <div id="popup-buttons"
-           class="flex flex-row gap-x-2 justify-between w-[100%] md:justify-evenly">
+           class="flex flex-row gap-x-2 justify-center w-full md:justify-evenly">
         <BaggerButton :isPrimary=false customStyling="min-w-fit md:w-[8vw]" @click="popup = false">
           Annuleer
         </BaggerButton>

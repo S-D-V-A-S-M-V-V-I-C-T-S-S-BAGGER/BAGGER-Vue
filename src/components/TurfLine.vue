@@ -29,7 +29,7 @@
 </script>
 
 <template>
-  <div id="line" class="grid grid-rows-1 grid-cols-2 gap-2
+  <div id="line" class="grid grid-rows-1 grid-cols-2 gap-2 px-1
                         md:grid-cols-[15vw_25vw]">
 
     <div id="counter" class="row-start-1 col-start-1 col-span-1
