@@ -1,56 +1,56 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 import BaggerButton from '@/components/BaggerButton.vue'
 import TurfLine from '@/components/TurfLine.vue'
 import BaggerFooter from '@/components/BaggerFooter.vue'
+import { useTurfStore } from '@/stores/turfStore.ts'
+import { useRouter } from 'vue-router'
 
-interface LineItem {
-  amount?: number;
-  item?: string;
-  price?: number;
-}
 
-const total = ref(0)
-const lines = ref<LineItem[]>([{}])
+const turfStore = useTurfStore()
+const router = useRouter();
+
 const resets = ref(0)
 const popup = ref(false)
+const login = true
+
+const currentLines = ref(turfStore.lines)
 
 function addLine() {
-  lines.value.push({})
+  turfStore.addNewLine();
 }
-
-const login = true
 
 // const login = false;
 
 function totalUpdate(update: { index: number, amount: number, item: string, price: number }) {
-  lines.value[update.index] = {
+  turfStore.updateLine(update.index, {
     amount: update.amount,
     item: update.item,
     price: update.price
-  }
-
-  total.value = lines.value.reduce((sum, line) => {
-    const amount = line.amount || 0
-    const price = line.price || 0
-    return sum + (amount * price)
-  }, 0)
+  })
 }
 
 function resetTurf() {
-  lines.value = [{}]
-  total.value = 0
+  turfStore.reset()
   resets.value++
 }
 
 function submit() {
-//   TODO: 20269213 - To add the logic for submitting the TurfLines
-  console.log('Submit: ', lines.value, total.value)
-
   popup.value = false
-  resetTurf()
+  router.push('/gelegenheid');
 }
+
+// checking the current state of the store on mount
+// if the lines length is more than 0, then display the current lines in the input fields
+onMounted(() => {
+  // TODO: 20260227 - Implement the display of the current lines in the input fields
+  if (currentLines.value.length > 0) {
+    console.log("Need to display at the turf lines: ", currentLines.value)
+  } else {
+    console.log("No lines to display at the turf lines")
+  }
+})
 
 </script>
 
@@ -64,7 +64,7 @@ function submit() {
       <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset
       </BaggerButton>
       <div id="total" class="bg-secondary text-white border-secondary border rounded-xl px-2 w-[40vw] text-center
-                               md:w-[15vw] md:px-5 md:py-1">Totaal: € {{ total }}
+                               md:w-[15vw] md:px-5 md:py-1">Totaal: € {{ turfStore.total }}
       </div>
     </div>
 
@@ -82,7 +82,7 @@ function submit() {
                                     md:w-[45vw] md:h-[60vh]">
 
       <div id="turf-lines" class="w-full flex flex-col gap-y-5 ">
-        <TurfLine v-for="(line, i) in lines" :key="`${resets}-${i}`" :index="i"
+        <TurfLine v-for="(line, i) in turfStore.lines" :key="`${resets}-${i}`" :index="i"
                   @turf-line="totalUpdate"
         />
       </div>
