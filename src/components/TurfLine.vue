@@ -36,7 +36,7 @@
      grid grid-rows-1 grid-cols-3 gap-x-2 md:grid-cols-[4vw_6vw_4vw]">
 
       <div id="minus" class="row-start-1 col-start-1 col-span-1">
-        <BaggerButton :isPrimary=false customStyling="w-[100%] h-[100%]" @click="decrease">-</BaggerButton>
+        <BaggerButton :isPrimary=false customStyling="w-[100%] h-[100%]" @click="decrease"><i class="pi pi-minus"></i></BaggerButton>
       </div>
 
       <div id="amount" class="row-start-1 row-span-1 col-start-2 col-span-1 h-full">
@@ -49,7 +49,7 @@
       </div>
 
       <div id="plus" class="row-start-1 row-span-1 col-start-3 col-span-1">
-        <BaggerButton :isPrimary=false customStyling="w-[100%] h-[100%]" @click="increase">+</BaggerButton>
+        <BaggerButton :isPrimary=false customStyling="w-[100%] h-[100%]" @click="increase"><i class="pi pi-plus"></i></BaggerButton>
       </div>
 
     </div>
