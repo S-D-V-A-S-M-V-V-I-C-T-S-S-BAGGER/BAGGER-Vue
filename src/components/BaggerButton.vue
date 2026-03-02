@@ -20,11 +20,17 @@ defineProps({
     type: Boolean,
     required: false,
     default: false
+  },
+  icon: {
+    type: String,
+    required: false,
+    default: ''
   }
 })
 </script>
 
 <template>
+
   <button
     @click="emitClickEvent"
     :class="[
@@ -33,10 +39,12 @@ defineProps({
         : 'bg-secondary text-white border-secondary',
         faded ? 'bg-secondary-faded text-white-faded border-secondary-faded' : '',
        customStyling,
-       'border rounded-xl pop-effects py-1 px-2 md:px-5 md:py-1 '
+       'border rounded-xl pop-effects px-2 py-1  md:px-5 md:py-1 ',
+
        ]
     "
   >
+    <i v-if="icon" :class="icon + ' px-2 md:pr-2 md:px-0'"></i>
     <slot>🌱</slot>
   </button>
 </template>

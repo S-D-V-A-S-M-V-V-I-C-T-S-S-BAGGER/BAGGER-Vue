@@ -1,5 +1,8 @@
 <script setup lang="ts">
   import BaggerButton from '@/components/BaggerButton.vue';
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
 </script>
 
 <template>
@@ -12,12 +15,12 @@
   <div id="links" class="flex flex-col items-center gap-y-5
                           md:grid md:grid-cols-3 md:grid-rows-3 md:gap-5">
     <h1 class="md:col-start-1 md:col-span-3 md:row-start-1 md:justify-self-center">Links</h1>
-    <BaggerButton><router-link :to="{ name: 'home'}">Home/Smoelenboek</router-link></BaggerButton>
-    <BaggerButton><router-link :to="{ name: 'turf'}">Turflijst</router-link></BaggerButton>
-    <BaggerButton><router-link :to="{ name: 'quotes'}">Quotes</router-link></BaggerButton>
-    <BaggerButton>Declaratie indienen</BaggerButton>
-    <BaggerButton>Activiteiten planning</BaggerButton>
-    <BaggerButton><router-link :to="{ name: 'sitemap' }">Hier</router-link></BaggerButton>
+    <BaggerButton icon="pi pi-home" @click="() => router.push('/')">Home/Smoelenboek</BaggerButton>
+    <BaggerButton icon="pi pi-money-bill" @click="() => router.push('/turf')">Turflijst</BaggerButton>
+    <BaggerButton icon="pi pi-comments" @click="() => router.push('/quotes')">Quotes</BaggerButton>
+    <BaggerButton icon="pi pi-receipt">Declaratie indienen</BaggerButton>
+    <BaggerButton icon="pi pi-calendar">Activiteiten planning</BaggerButton>
+    <BaggerButton icon="pi pi-bars" @click="() => router.push('/sitemap')">Hier</BaggerButton>
   </div>
 
   <div id="api" class="flex flex-col gap-y-3">
@@ -34,7 +37,7 @@
     </div>
 
     <div class="flex flex-row gap-x-3 items-center">
-      <BaggerButton><router-link :to="{ name: 'bafkos' }">Bafko</router-link></BaggerButton>
+      <BaggerButton @click="() => router.push('/bafkos')">Bafko</BaggerButton>
       <p>Voor elke situatie wel één!</p>
     </div>
 

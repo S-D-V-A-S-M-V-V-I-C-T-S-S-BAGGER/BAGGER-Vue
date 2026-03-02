@@ -86,7 +86,7 @@ const formatDate = (dateString: string) => {
         :placeholder="new Date().toLocaleDateString()"
         customStyling="w-full"
       />
-      <BaggerButton>Nieuwe quote toevoegen!</BaggerButton>
+      <BaggerButton icon="pi pi-plus">Nieuwe quote toevoegen!</BaggerButton>
 
     </div>
 
@@ -95,7 +95,7 @@ const formatDate = (dateString: string) => {
     </div>
 
     <div id="quotes-wrapper" class="w-[80vw] h-[45vh] flex flex-col items-center gap-y-5 overflow-y-auto
-                                    md:w-[45vw] md:h-[65vh] md:px-5">
+                                    md:w-[45vw] md:h-[55vh] md:px-5">
 
       <div v-for="(quote, index) in dummyQuotes" :key="index">
 
