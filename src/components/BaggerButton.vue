@@ -9,13 +9,18 @@ defineProps({
   isPrimary: {
     type: Boolean,
     required: false,
-    default: true,
+    default: true
   },
   customStyling: {
     type: String,
     required: false,
-    default: '',
+    default: ''
   },
+  faded: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 })
 </script>
 
@@ -26,9 +31,11 @@ defineProps({
       isPrimary
         ? 'bg-primary text-black border-primary'
         : 'bg-secondary text-white border-secondary',
-      customStyling,
-      'border rounded-xl pop-effects px-2 md:px-5 md:py-1 ',
-    ]"
+        faded ? 'bg-secondary-faded text-white-faded border-secondary-faded' : '',
+       customStyling,
+       'border rounded-xl pop-effects py-1 px-2 md:px-5 md:py-1 '
+       ]
+    "
   >
     <slot>🌱</slot>
   </button>

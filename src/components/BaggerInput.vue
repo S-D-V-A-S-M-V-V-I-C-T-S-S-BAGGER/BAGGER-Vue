@@ -1,17 +1,18 @@
 <script setup lang="ts">
+
 const props = defineProps({
   modelValue: {
     type: [String, Number],
-    default: '',
+    default: ''
   },
   type: {
     type: String,
     default: '',
-    validator: (value) => ['text', 'number'].includes(value),
+    validator: (value) => ['text', 'number'].includes(value)
   },
   placeholder: {
     type: String,
-    default: '',
+    default: ''
   },
 })
 
@@ -26,6 +27,7 @@ const inputHandler = (event) => {
     emit('update:modelValue', raw)
   }
 }
+
 </script>
 
 <template>
@@ -44,7 +46,7 @@ const inputHandler = (event) => {
 /* From Uiverse.io by alexruix and edited for this project */
 
 div {
-  height: 100%;
+  height: 100%
 }
 
 #bagger-input {
@@ -63,8 +65,7 @@ div {
   color: var(--color-brown-medium);
 }
 
-#bagger-input:focus,
-input:hover {
+#bagger-input:focus, input:hover {
   outline: none;
   border-color: var(--color-secondary);
   background-color: var(--color-primary);

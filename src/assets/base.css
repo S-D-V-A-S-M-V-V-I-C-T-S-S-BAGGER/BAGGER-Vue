@@ -10,6 +10,8 @@
   --color-brown-light: #ce8d4a;
   --color-brown-medium: #825a30;
   --color-brown-dark: #6d461b;
+  --color-secondary-faded: #39673250;
+  --color-white-faded: #FFFFFF50;
 }
 
 html, body {
