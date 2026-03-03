@@ -4,6 +4,7 @@ import Menu from '@/views/Menu.vue'
 import Quotes from '@/views/Quotes.vue'
 import Turf from '@/views/Turf.vue'
 import Occasions from '@/views/Occasions.vue'
+import BafkosView from '@/views/BafkosView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/gelegenheid',
       name: 'gelegenheid',
       component: Occasions,
+    },
+    {
+      path: '/bafkos',
+      name: 'bafkos',
+      component: BafkosView,
     }
   ],
 })

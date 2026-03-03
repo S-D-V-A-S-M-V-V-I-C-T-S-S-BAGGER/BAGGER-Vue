@@ -14,6 +14,16 @@ const props = defineProps({
     type: String,
     default: ''
   },
+  customStyling: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  icon: {
+    type: String,
+    required: false,
+    default: ''
+  }
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -31,14 +41,19 @@ const inputHandler = (event) => {
 </script>
 
 <template>
-  <div>
+  <div class="relative flex items-center">
     <input
       :type="type"
       :value="modelValue"
       :placeholder="placeholder"
+      :class="[
+        customStyling,
+        icon ? 'pl-7 pr-[1vw]' : 'px-[1vw]'
+      ]"
       @input="inputHandler"
       id="bagger-input"
     />
+    <i v-if="icon" :class="icon + ' absolute left-1 text-brown-medium pointer-events-none'"></i>
   </div>
 </template>
 
@@ -50,9 +65,6 @@ div {
 }
 
 #bagger-input {
-  width: 100%;
-  height: 100%;
-  padding: 0 1vw;
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;

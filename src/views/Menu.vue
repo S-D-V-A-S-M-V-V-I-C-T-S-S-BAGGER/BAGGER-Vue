@@ -34,7 +34,7 @@
     </div>
 
     <div class="flex flex-row gap-x-3 items-center">
-      <BaggerButton>Bafko</BaggerButton>
+      <BaggerButton><router-link :to="{ name: 'bafkos' }">Bafko</router-link></BaggerButton>
       <p>Voor elke situatie wel één!</p>
     </div>
 
