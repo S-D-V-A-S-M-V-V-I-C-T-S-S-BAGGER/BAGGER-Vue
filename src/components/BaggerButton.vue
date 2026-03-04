@@ -39,8 +39,7 @@ defineProps({
         : 'bg-secondary text-white border-secondary',
         faded ? 'bg-secondary-faded text-white-faded border-secondary-faded' : '',
        customStyling,
-       'border rounded-xl pop-effects px-2 py-1  md:px-5 md:py-1 ',
-
+       'border rounded-xl pop-effects px-2 py-1 flex flex-row items-center justify-center md:px-5 md:py-1 ',
        ]
     "
   >
