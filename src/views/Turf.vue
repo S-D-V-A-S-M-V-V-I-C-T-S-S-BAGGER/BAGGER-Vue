@@ -83,6 +83,9 @@ onMounted(() => {
 
       <div id="turf-lines" class="w-full flex flex-col gap-y-5 mt-1">
         <TurfLine v-for="(line, i) in turfStore.lines" :key="`${resets}-${i}`" :index="i"
+                  :startAmount="line.amount"
+                  :startItem="line.item"
+                  :startPrice="line.price"
                   @turf-line="totalUpdate"
         />
       </div>

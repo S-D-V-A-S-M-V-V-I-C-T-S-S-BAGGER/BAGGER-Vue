@@ -4,11 +4,16 @@
   import BaggerInput from '@/components/BaggerInput.vue'
 
   const emit = defineEmits(['turf-line']);
-  const props = defineProps<{ index: number}>();
+  const props = defineProps<{
+    index: number;
+    startAmount?: number;
+    startItem?: string;
+    startPrice?: number;
+  }>();
 
-  const amount = ref(0);
-  const item = ref("");
-  const price = ref(0);
+  const amount = ref(props.startAmount || 0);
+  const item = ref(props.startItem || "");
+  const price = ref(props.startPrice || 0);
 
   watch([amount, item, price], () => {
     emit('turf-line', {
