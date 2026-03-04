@@ -60,13 +60,6 @@ function setSelected(name: string | undefined, date: string | undefined) {
 // Boolean to keep track is the selected ref is empty or not
 const emptySelected = computed(() => Object.keys(turfStore.currentOccasion).length === 0)
 
-function sendSelected() {
-  console.log('Selected: ')
-  console.log(turfStore.currentOccasion)
-
-  router.push('/turf-check')
-}
-
 function isSelectedOccasion(name: string | undefined, date: string | undefined) {
   // get the current selected
   const current = turfStore.currentOccasion
@@ -80,7 +73,7 @@ function isSelectedOccasion(name: string | undefined, date: string | undefined) 
   <div id="wrapper" class="flex flex-col items-center mx-5 my-5 gap-y-10">
 
     <BaggerButton icon="pi pi-step-forward" :faded="emptySelected" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]"
-                  @click="sendSelected">Volgende
+                  @click="() => router.push('/turf-check')">Volgende
     </BaggerButton>
 
 
