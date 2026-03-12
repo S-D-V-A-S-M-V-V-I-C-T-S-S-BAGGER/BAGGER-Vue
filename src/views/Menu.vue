@@ -16,7 +16,7 @@
                           md:grid md:grid-cols-3 md:grid-rows-3 md:gap-5">
     <h1 class="md:col-start-1 md:col-span-3 md:row-start-1 md:justify-self-center">Links</h1>
     <BaggerButton icon="pi pi-home" @click="() => router.push('/')">Home/Smoelenboek</BaggerButton>
-    <BaggerButton icon="pi pi-money-bill" @click="() => router.push('/turf')">Turflijst</BaggerButton>
+    <BaggerButton icon="pi pi-money-bill" @click="() => router.push('/turf-choice')">Turflijst</BaggerButton>
     <BaggerButton icon="pi pi-comments" @click="() => router.push('/quotes')">Quotes</BaggerButton>
     <BaggerButton icon="pi pi-receipt">Declaratie indienen</BaggerButton>
     <BaggerButton icon="pi pi-calendar">Activiteiten planning</BaggerButton>

@@ -14,7 +14,7 @@ const router = useRouter()
     <BaggerButton @click="() => router.push('/sitemap')">
       <i class="pi pi-bars"></i>
     </BaggerButton>
-    <BaggerButton>LOGOUT</BaggerButton>
+    <BaggerButton >LOGOUT</BaggerButton>
   </div>
 </template>
 

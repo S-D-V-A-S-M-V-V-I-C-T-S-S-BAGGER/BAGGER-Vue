@@ -6,6 +6,8 @@ import Turf from '@/views/Turf.vue'
 import Occasions from '@/views/Occasions.vue'
 import BafkosView from '@/views/BafkosView.vue'
 import TurfCheckView from '@/views/TurfCheckView.vue'
+import TurfChoiceView from '@/views/TurfChoiceView.vue'
+import TurfTotalView from '@/views/TurfTotalView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,11 @@ const router = createRouter({
       component: Quotes,
     },
     {
+      path: '/turf-choice',
+      name: 'turf-choice',
+      component: TurfChoiceView,
+    },
+    {
       path: '/turf',
       name: 'turf',
       component: Turf,
@@ -39,6 +46,11 @@ const router = createRouter({
       path: '/turf-check',
       name: '/turf-check',
       component: TurfCheckView
+    },
+    {
+      path: '/turf-total',
+      name: 'turf-total',
+      component: TurfTotalView,
     },
     {
       path: '/bafkos',
