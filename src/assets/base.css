@@ -13,6 +13,8 @@
   --color-brown-dark: #6d461b;
   --color-secondary-faded: #39673250;
   --color-white-faded: #FFFFFF50;
+  --color-green-neon:  #46f20d;
+  --color-green-neon-faded: #46f20d50;
 }
 
 html, body {
@@ -38,11 +40,25 @@ h3 {
 }
 h4 {
   color: var(--color-primary);
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
   text-transform: uppercase;
+}
+h5 {
+  color: var(--color-secondary);
+  font-size: medium;
+  font-weight: bold;
 }
 
 p {
   color: var(--color-blue);
 }
+
+@layer components {
+
+  .bottomBorder {
+    @apply w-full border-b border-secondary shadow-sm shadow-green-neon-faded;
+  }
+
+}
+
