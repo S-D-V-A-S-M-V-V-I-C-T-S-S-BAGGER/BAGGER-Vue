@@ -8,6 +8,7 @@ import BafkosView from '@/views/BafkosView.vue'
 import TurfCheckView from '@/views/TurfCheckView.vue'
 import TurfChoiceView from '@/views/TurfChoiceView.vue'
 import TurfTotalView from '@/views/TurfTotalView.vue'
+import ActivitiesView from '@/views/ActivitiesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,11 @@ const router = createRouter({
       path: '/bafkos',
       name: 'bafkos',
       component: BafkosView,
+    },
+    {
+      path: '/activiteiten',
+      name: 'activiteiten',
+      component: ActivitiesView,
     }
   ],
 })

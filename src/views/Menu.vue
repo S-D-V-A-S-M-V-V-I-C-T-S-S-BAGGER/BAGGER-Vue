@@ -19,7 +19,7 @@
     <BaggerButton icon="pi pi-money-bill" @click="() => router.push('/turf-choice')">Turflijst</BaggerButton>
     <BaggerButton icon="pi pi-comments" @click="() => router.push('/quotes')">Quotes</BaggerButton>
     <BaggerButton icon="pi pi-receipt">Declaratie indienen</BaggerButton>
-    <BaggerButton icon="pi pi-calendar">Activiteiten planning</BaggerButton>
+    <BaggerButton icon="pi pi-calendar" @click="() => router.push('/activiteiten')">Activiteiten planning</BaggerButton>
     <BaggerButton icon="pi pi-bars" @click="() => router.push('/sitemap')">Hier</BaggerButton>
   </div>
 
