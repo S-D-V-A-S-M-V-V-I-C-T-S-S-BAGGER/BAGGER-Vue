@@ -45,9 +45,10 @@ const getDay = (dateString: string | undefined) => {
 
 <template>
   <div id="box" class="grid auto-rows-max grid-cols-1 w-full rounded-xl shadow-xl bg-brown-medium
-                      ">
+                      md:grid-cols-3 md:grid-rows-1 md:auto-cols-max">
 
-    <div id="info-items" class="rows-start-1 row-span-1 flex flex-row gap-x-5 py-3 px-5 ">
+    <div id="info-items" class="rows-start-1 row-span-1 flex flex-row gap-x-5 py-3 px-5
+                      md:col-start-1 col-span-1">
 
       <div id="date" class="flex flex-col px-5 justify-center items-center border border-brown-dark
                             rounded-xl shadow-xl/10 inset-shadow-sm bg-brown-dark">
@@ -67,14 +68,15 @@ const getDay = (dateString: string | undefined) => {
       </div>
     </div>
 
-    <div id="participants" class="rows-start-2 row-span-1 flex flex-row flex-wrap gap-x-1 py-3 max-h-fit pl-2 " >
+    <div id="participants" class="rows-start-2 row-span-1 flex flex-row flex-wrap gap-x-1 py-3 pl-2
+                      md:col-start-2 md:col-span-1">
       <p v-for="(participant, index) in participants" :key="index">
         {{ participant.name }}<span v-if="index < participants.length - 1">, </span>
       </p>
     </div>
 
     <div id="buttons" class="rows-start-3 row-span-1 flex flex-row gap-x-3 flex-wrap justify-center py-5
-                  ">
+                      md:col-start-3 md:col-span-1">
       <div v-for="(button, index) in buttons" :key="index">
         <BaggerButton :icon="button.icon">{{ button.text }}</BaggerButton>
       </div>
