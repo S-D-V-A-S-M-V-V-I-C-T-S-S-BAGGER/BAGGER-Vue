@@ -39,6 +39,12 @@ const activities = ref<Activity[]>([
     date: '2026-04-15',
     time: '20:00',
     location: 'TBD'
+  },
+  {
+    name: 'BAvond',
+    date: '2026-04-01',
+    time: '20:00',
+    location: 'Huize Oranje Boven'
   }
 ])
 
@@ -69,19 +75,21 @@ const buttons = ref<{ text: string, icon?: string }[]>([
   <div id="wrapper" class="flex flex-col items-start gap-y-5 mt-5 px-5">
 
 <!--    Title and new button-->
-    <div id="title" class="flex flex-row justify-between w-full border-b border-secondary max-h-fit pb-3">
+    <div id="title" class="flex flex-row justify-between w-full border-b border-secondary max-h-fit pb-3 md:px-10">
       <h1>Activiteiten</h1>
       <BaggerButton icon="pi pi-plus">Nieuwe Activiteit!</BaggerButton>
     </div>
 
 <!--    Filters-->
-    <div id="filters" class="grid grid-rows-1 grid-cols-2 gap-x-5 border-b border-secondary max-h-fit pb-5 w-full" >
-      <BaggerButton icon="pi pi-hourglass">Aankomende</BaggerButton>
-      <BaggerButton icon="pi pi-history">Geweest</BaggerButton>
+    <div id="filters" class="grid grid-rows-1 grid-cols-2 gap-x-5 border-b border-secondary max-h-fit pb-5 w-full
+                             md:flex md:flex-row md:pb-3 md:px-10" >
+      <BaggerButton icon="pi pi-hourglass" customStyling="md:w-1/7">Aankomende</BaggerButton>
+      <BaggerButton icon="pi pi-history" customStyling="md:w-1/7">Geweest</BaggerButton>
     </div>
 
 <!--    Activity list-->
-    <div id="list-wrapper" class="w-[90vw] h-[65vh] flex flex-col gap-y-5 overflow-y-auto">
+    <div id="list-wrapper" class="w-[90vw] h-[65vh] flex flex-col gap-y-5 overflow-y-auto
+                              md:h-[60vh]">
       <div v-for="(activity, index) in activities" :key="index">
         <div id="date_name" class="w-full">
           <ActivityBox :activity="activity" :participants="participants" :buttons="buttons"/>

@@ -54,11 +54,4 @@ p {
   color: var(--color-blue);
 }
 
-@layer components {
-
-  .bottomBorder {
-    @apply w-full border-b border-secondary shadow-sm shadow-green-neon-faded;
-  }
-
-}
 
