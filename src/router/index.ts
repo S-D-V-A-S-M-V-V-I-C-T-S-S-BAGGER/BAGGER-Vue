@@ -9,6 +9,7 @@ import TurfCheckView from '@/views/turf/TurfCheckView.vue'
 import TurfChoiceView from '@/views/turf/TurfChoiceView.vue'
 import TurfTotalView from '@/views/turf/TurfTotalView.vue'
 import ActivitiesView from '@/views/activities/ActivitiesView.vue'
+import NewActivityView from '@/views/activities/NewActivityView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +63,11 @@ const router = createRouter({
       path: '/activiteiten',
       name: 'activiteiten',
       component: ActivitiesView,
+    },
+    {
+      path: '/activiteiten/nieuw',
+      name: '/activiteiten/nieuw',
+      component: NewActivityView,
     }
   ],
 })
