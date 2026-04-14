@@ -65,14 +65,16 @@ const participants = ref<{ name: string }[]>([
 
 const buttons = ref<{ text: string, icon?: string }[]>([
   { text: 'Ik ben bij', icon: 'pi pi-check' },
-  { text: 'Ik ben saai', icon: 'pi pi-times' }
+  { text: 'Ik ben saai', icon: 'pi pi-times' },
+  { text: 'Ik ben later', icon: 'pi pi-times' },
+  { text: 'Ik kan niet ofzo', icon: 'pi pi-times' },
 ])
 
 
 </script>
 
 <template>
-  <div id="wrapper" class="flex flex-col items-start gap-y-5 mt-5 px-5">
+  <div id="wrapper" class="flex flex-col items-start gap-y-5 mt-5 px-5 md:items-center">
 
 <!--    Title and new button-->
     <div id="title" class="flex flex-row justify-between w-full border-b border-secondary max-h-fit pb-3 md:px-10">

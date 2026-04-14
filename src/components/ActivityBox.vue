@@ -69,14 +69,14 @@ const getDay = (dateString: string | undefined) => {
     </div>
 
     <div id="participants" class="rows-start-2 row-span-1 flex flex-row flex-wrap gap-x-1 py-3 pl-2
-                      md:col-start-2 md:col-span-1">
+                      md:col-start-2 md:col-span-1 md:items-center">
       <p v-for="(participant, index) in participants" :key="index">
         {{ participant.name }}<span v-if="index < participants.length - 1">, </span>
       </p>
     </div>
 
-    <div id="buttons" class="rows-start-3 row-span-1 flex flex-row gap-x-3 flex-wrap justify-center py-5
-                      md:col-start-3 md:col-span-1">
+    <div id="buttons" class="rows-start-3 row-span-1 flex flex-row gap-x-3 gap-y-3 flex-wrap justify-center py-5
+                      md:col-start-3 md:col-span-1 md:items-center">
       <div v-for="(button, index) in buttons" :key="index">
         <BaggerButton :icon="button.icon">{{ button.text }}</BaggerButton>
       </div>
