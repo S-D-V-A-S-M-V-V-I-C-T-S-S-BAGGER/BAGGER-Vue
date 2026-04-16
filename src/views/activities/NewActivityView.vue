@@ -4,8 +4,10 @@ import BaggerButton from '@/components/BaggerButton.vue'
 import BaggerInput from '@/components/BaggerInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useActivityStore } from '@/stores/activityStore'
 
 const router = useRouter()
+const activityStore = useActivityStore()
 
 const name = ref('')
 const date = ref('')
@@ -15,6 +17,37 @@ const locationName = ref('')
 const locationAddress = ref('')
 const description = ref('')
 
+function createActivity() {
+  if (!name.value || !date.value) {
+    alert('Vul alstublieft naam en datum in')
+    return
+  }
+
+  activityStore.addActivity({
+    name: name.value,
+    date: date.value,
+    startTime: startTime.value,
+    endTime: endTime.value,
+    location: {
+      name: locationName.value,
+      address: locationAddress.value
+    },
+    description: description.value
+  })
+
+  resetForm()
+  router.push('/activiteiten')
+}
+
+function resetForm() {
+  name.value = ''
+  date.value = ''
+  startTime.value = ''
+  endTime.value = ''
+  locationName.value = ''
+  locationAddress.value = ''
+  description.value = ''
+}
 
 </script>
 
@@ -96,9 +129,9 @@ const description = ref('')
       <div id="buttons" class="flex flex-row justify-evenly col-start-1 col-span-2 row-start-8 row-span-1">
         <BaggerButton
           customStyling="w-1/3"
-          @click="() => router.push('/activiteiten')"
+          @click="createActivity"
         >Maak aan!</BaggerButton>
-        <BaggerButton customStyling="w-1/3">Reset</BaggerButton>
+        <BaggerButton customStyling="w-1/3" @click="resetForm">Reset</BaggerButton>
       </div>
     </div>
   </div>

@@ -1,15 +1,11 @@
 <script setup lang="ts">
 
 import BaggerButton from '@/components/BaggerButton.vue'
-import type { Activity } from '@/views/ActivitiesView.vue'
+import type { Activity } from '@/stores/activityStore'
 
 defineProps({
   activity: {
     type: Object as () => Activity,
-    required: true
-  },
-  participants: {
-    type: Array as () => { name: string }[],
     required: true
   },
   buttons: {
@@ -63,16 +59,19 @@ const getDay = (dateString: string | undefined) => {
       <div id="info"
            class="flex flex-col justify-center items-start max-h-fit">
         <h3 class="font-bold">{{ activity.name }}</h3>
-        <p><i class="pi pi-map-marker"></i> {{ activity.location }}</p>
-        <p><i class="pi pi-clock"></i> {{ activity.time }}</p>
+        <p><i class="pi pi-map-marker"></i> {{ activity.location?.name || 'Geen locatie' }}</p>
+        <p><i class="pi pi-clock"></i> {{ activity.startTime || 'Geen tijd' }}</p>
       </div>
     </div>
 
     <div id="participants" class="rows-start-2 row-span-1 flex flex-row flex-wrap gap-x-1 py-3 pl-2
                       md:col-start-2 md:col-span-1 md:items-center">
-      <p v-for="(participant, index) in participants" :key="index">
-        {{ participant.name }}<span v-if="index < participants.length - 1">, </span>
+      <p v-if="activity.participants && activity.participants.length > 0">
+        <span v-for="(participant, index) in activity.participants" :key="index">
+          {{ participant }}<span v-if="index < activity.participants!.length - 1">, </span>
+        </span>
       </p>
+      <p v-else class="text-gray-500">Geen deelnemers</p>
     </div>
 
     <div id="buttons" class="rows-start-3 row-span-1 flex flex-row gap-x-3 gap-y-3 flex-wrap justify-center py-5
