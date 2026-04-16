@@ -21,56 +21,84 @@ const description = ref('')
 <template>
   <div id="wrapper" class="flex flex-col items-start gap-5 mt-5 mx-5">
 
-    <div id="title" class="w-full text-center border-b border-secondary max-h-fit pb-3">
+    <div id="title" class="w-full text-center border-b-3 border-secondary max-h-fit pb-3">
       <h1>Hier Kan Je Een Nieuwe Activiteit Aanmaken</h1>
     </div>
 
-    <div id="form" class="w-full grid grid-cols-2 grid-rows-10 auto-rows-max gap-x-3 gap-y-3">
+    <div id="form" class="w-full grid grid-cols-2 grid-rows-8 auto-rows-max gap-y-5">
 
-      <div id="name" class="flex flex-col">
+      <div id="name" class="flex flex-col col-start-1 col-span-2 row-start-1 row-span-1">
         <h6>Naam:</h6>
-        <BaggerInput />
+        <BaggerInput
+          v-model="name"
+          type="text"
+          placeholder="Naam van de activiteit ..."
+          customStyling="w-full" />
       </div>
 
-      <div id="date" class="flex flex-col">
+      <div id="date" class="flex flex-col col-start-1 col-span-2 row-start-2 row-span-1">
         <h6>Datum:</h6>
-        <BaggerInput />
+        <BaggerInput
+          v-model="date"
+          type="date"
+          customStyling="w-full" />
       </div>
 
-      <div id="times">
-        <div id="start" class="flex flex-col">
+      <div id="times" class="col-start-1 col-span-2 row-start-3 row-span-1 grid grid-cols-2 grid-rows-1">
+        <div id="start" class="flex flex-col col-start-1 col-span-1">
           <h6>Starttijd:</h6>
-          <BaggerInput />
+          <BaggerInput
+            v-model="startTime"
+            type="time"
+            customStyling="w-9/10" />
         </div>
-        <div id="end" class="flex flex-col">
+        <div id="end" class="flex flex-col col-start-2 col-span-2">
           <h6>Eindtijd:</h6>
-          <BaggerInput />
+          <BaggerInput
+            v-model="endTime"
+            type="time"
+            customStyling="w-9/10" />
         </div>
       </div>
 
-      <div id="location">
-        <div id="location_name" class="flex flex-col">
+      <div id="location" class="col-start-1 col-span-2 row-start-4 row-span-2 grid grid-cols-2 grid-rows-2 gap-y-2">
+        <div id="location_name" class="flex flex-col col-start-1 col-span-2 row-start-1 row-span-1">
           <h6>Naam van locatie:</h6>
-          <BaggerInput />
+          <BaggerInput
+            v-model="locationName"
+            type="text"
+            placeholder="Naam van de locatie ..."
+            customStyling="w-full" />
         </div>
-        <div id="location_address" class="flex flex-col">
-          <h6>Adres</h6>
-          <BaggerInput />
+        <div id="location_address" class="flex flex-col col-start-1 col-span-2 row-start-2 row-span-1">
+          <h6>Adres:</h6>
+          <BaggerInput
+            v-model="locationAddress"
+            type="text"
+            placeholder="Adres van de locatie ..."
+            customStyling="w-full" />
         </div>
       </div>
 
-      <div id="description" class="flex flex-col">
+      <div id="description" class="flex flex-col col-start-1 col-span-2 row-start-6 row-span-1">
         <h6>Beschrijving:</h6>
-        <BaggerInput placeholder="Vul hier de extra informatie in ..." />
+        <BaggerInput
+          v-model="description"
+          type="text"
+          placeholder="Vul hier de extra informatie in ..."
+          customStyling="w-full" />
       </div>
 
-      <div id="sing-up-options" class="flex flex-col">
+      <div id="sing-up-options" class="flex flex-col col-start-1 col-span-2 row-start-7 row-span-1">
         <h6>Hier komt iets met buttons maken voor inschrijven</h6>
       </div>
 
-      <div id="buttons">
-        <BaggerButton>Maak aan!</BaggerButton>
-        <BaggerButton>Reset</BaggerButton>
+      <div id="buttons" class="flex flex-row justify-evenly col-start-1 col-span-2 row-start-8 row-span-1">
+        <BaggerButton
+          customStyling="w-1/3"
+          @click="() => router.push('/activiteiten')"
+        >Maak aan!</BaggerButton>
+        <BaggerButton customStyling="w-1/3">Reset</BaggerButton>
       </div>
     </div>
   </div>
