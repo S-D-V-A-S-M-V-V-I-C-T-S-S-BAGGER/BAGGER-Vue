@@ -2,8 +2,13 @@
 
 import BaggerButton from '@/components/BaggerButton.vue'
 import type { Activity } from '@/stores/activityStore'
+import { useRouter } from 'vue-router'
+import { useActivityStore } from '@/stores/activityStore'
 
-defineProps({
+const router = useRouter()
+const activityStore = useActivityStore()
+
+const props = defineProps({
   activity: {
     type: Object as () => Activity,
     required: true
@@ -13,6 +18,13 @@ defineProps({
     required: true
   }
 });
+
+const handleActivityClick = () => {
+  if (props.activity.id) {
+    activityStore.setCurrent(props.activity.id);
+    router.push(`/activiteiten/${props.activity.id}`);
+  }
+}
 
 const getMonthAbbr = (dateString: string | undefined) => {
   if (!dateString) return "Geen datum =("
@@ -41,7 +53,8 @@ const getDay = (dateString: string | undefined) => {
 
 <template>
   <div id="box" class="grid auto-rows-max grid-cols-1 w-full rounded-xl shadow-xl bg-brown-medium
-                      md:grid-cols-3 md:grid-rows-1 md:auto-cols-max">
+                       md:grid-cols-3 md:grid-rows-1 md:auto-cols-max cursor-pointer hover:shadow-2xl transition-shadow duration-200"
+       @click="handleActivityClick">
 
     <div id="info-items" class="rows-start-1 row-span-1 flex flex-row gap-x-5 py-3 px-5
                       md:col-start-1 col-span-1">
