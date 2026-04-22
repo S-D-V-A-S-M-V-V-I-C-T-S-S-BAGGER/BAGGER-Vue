@@ -10,7 +10,7 @@ import BaggerFooter from '@/components/BaggerFooter.vue'
 <template>
   <div id="wrapper" class="flex flex-col items-center justify-center h-[90vh]">
     <div id="page-items" class="flex flex-col items-center justify-center gap-y-10">
-      <BaggerButton icon="pi pi-sync" customStyling="w-[70vw] md:w-[40vw]">Reset</BaggerButton>
+      <BaggerButton icon="fa-solid fa-rotate" customStyling="w-[70vw] md:w-[40vw]">Reset</BaggerButton>
 
       <BaggerInput
       type="number"

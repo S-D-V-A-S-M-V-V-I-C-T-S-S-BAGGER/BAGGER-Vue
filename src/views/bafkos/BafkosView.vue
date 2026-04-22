@@ -105,15 +105,15 @@ watch(search, (current) => {
 
     <div class="flex flex-col gap-y-4 items-center
                   md:w-[80vw] md:flex-row md:justify-around">
-      <BaggerButton customStyling="w-[80vw] h-fit md:w-[15vw]" @click="randomBafko(true)"><i class="pi pi-question"></i> Willekeurige BAFKO
+      <BaggerButton customStyling="w-[80vw] h-fit md:w-[15vw]" @click="randomBafko(true)"><i class="fa-solid fa-question"></i> Willekeurige BAFKO
       </BaggerButton>
 
-      <BaggerButton customStyling="w-[80vw] h-fit md:w-[10vw]" @click="randomBafko(false)"><i class="pi pi-sync"></i> Reset Lijst
+      <BaggerButton customStyling="w-[80vw] h-fit md:w-[10vw]" @click="randomBafko(false)"><i class="fa-solid fa-rotate"></i> Reset Lijst
       </BaggerButton>
 
       <BaggerInput type="text" placeholder="Zoek voor bafko of beschrijving"
                    customStyling="w-[80vw] md:w-[30vw]"
-                   icon="pi pi-search" v-model="search"></BaggerInput>
+                   icon="fa-brands fa-sistrix" v-model="search"></BaggerInput>
 
       <div id="types" class="flex flex-col items-start w-[80vw]
                               md:w-[20vw] md:flex-row md:items-center md:gap-x-3">
@@ -125,10 +125,10 @@ watch(search, (current) => {
     </div>
 
     <div id="list-wrapper"
-         class="flex flex flex-col items-center h-[50vh] w-[80vw] gap-y-5 overflow-y-auto
+         class="flex flex-col items-center h-[45vh] w-[80vw] gap-y-5 overflow-y-auto
                 md:w-[90vw] md:h-[55vh] md:flex-row md:gap-x-5 md:flex-wrap md:items-start md:justify-center">
       <div id="list-item"
-           class="w-[100%] md:w-[20vw]"
+           class="w-full md:w-[20vw]"
            v-for="(bafko, index) in filtered" :key="index">
         <BafkoBox>
           <template v-slot:bafko>{{ bafko.bafko }}</template>
@@ -137,7 +137,9 @@ watch(search, (current) => {
         </BafkoBox>
       </div>
     </div>
+  </div>
 
+  <div id="footer" class="flex flex-col items-center w-full fixed bottom-0 pb-[5vh]">
     <BaggerFooter />
   </div>
 

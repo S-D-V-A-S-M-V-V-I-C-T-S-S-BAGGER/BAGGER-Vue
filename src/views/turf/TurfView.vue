@@ -61,7 +61,7 @@ onMounted(() => {
 
     <!-- Flex -->
     <div id="total" class="flex flex-col gap-y-1">
-      <BaggerButton icon="pi pi-sync" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset
+      <BaggerButton icon="fa-solid fa-rotate" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="resetTurf">Reset
       </BaggerButton>
       <div id="total" class="bg-secondary text-white border-secondary border rounded-xl px-2 py-1 w-[40vw] text-center
                                md:w-[15vw] md:px-5 md:py-1">Totaal: € {{ turfStore.total }}
@@ -91,7 +91,7 @@ onMounted(() => {
       </div>
 
       <div id="plus-turf-line">
-        <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="addLine"><i class="pi pi-plus"></i>
+        <BaggerButton :isPrimary=false customStyling="w-[40vw] md:w-[15vw]" @click="addLine"><i class="fa-solid fa-plus"></i>
         </BaggerButton>
       </div>
 

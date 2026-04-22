@@ -72,8 +72,8 @@ const getDay = (dateString: string | undefined) => {
       <div id="info"
            class="flex flex-col justify-center items-start max-h-fit">
         <h3 class="font-bold">{{ activity.name }}</h3>
-        <p><i class="pi pi-map-marker"></i> {{ activity.location?.name || 'Geen locatie' }}</p>
-        <p><i class="pi pi-clock"></i> {{ activity.startTime || 'Geen tijd' }}</p>
+        <p><i class="fa-solid fa-location-dot"></i> {{ activity.location?.name || 'Geen locatie' }}</p>
+        <p><i class="fa-regular fa-clock"></i> {{ activity.startTime || 'Geen tijd' }}</p>
       </div>
     </div>
 

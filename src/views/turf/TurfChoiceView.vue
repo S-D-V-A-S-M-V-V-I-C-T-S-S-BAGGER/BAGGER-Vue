@@ -15,7 +15,7 @@ const username = ref('username')
     <h1>Hallo {{ username }}!</h1>
     <div id="buttons" class="flex flex-col items-center justify-around w-[70vw] gap-y-15 md:flex-row">
       <BaggerButton icon="fa-solid fa-coins" @click="() => router.push('/turf-total')" customStyling="w-full h-[15vh] md:w-[25vw]">Eindbedrag invoeren</BaggerButton>
-      <BaggerButton icon="pi pi-list-check" @click="() => router.push('/turf')" customStyling="w-full h-[15vh] md:w-[25vw]">Turven</BaggerButton>
+      <BaggerButton icon="fa-solid fa-list-check" @click="() => router.push('/turf')" customStyling="w-full h-[15vh] md:w-[25vw]">Turven</BaggerButton>
     </div>
   </div>
 

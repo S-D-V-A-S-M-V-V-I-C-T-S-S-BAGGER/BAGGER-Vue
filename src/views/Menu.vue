@@ -15,12 +15,12 @@
   <div id="links" class="flex flex-col items-center gap-y-5
                           md:grid md:grid-cols-3 md:grid-rows-3 md:gap-5">
     <h1 class="md:col-start-1 md:col-span-3 md:row-start-1 md:justify-self-center">Links</h1>
-    <BaggerButton icon="pi pi-home" @click="() => router.push('/')">Home/Smoelenboek</BaggerButton>
-    <BaggerButton icon="pi pi-money-bill" @click="() => router.push('/turf-choice')">Turflijst</BaggerButton>
-    <BaggerButton icon="pi pi-comments" @click="() => router.push('/quotes')">Quotes</BaggerButton>
-    <BaggerButton icon="pi pi-receipt">Declaratie indienen</BaggerButton>
-    <BaggerButton icon="pi pi-calendar" @click="() => router.push('/activiteiten')">Activiteiten planning</BaggerButton>
-    <BaggerButton icon="pi pi-bars" @click="() => router.push('/sitemap')">Hier</BaggerButton>
+    <BaggerButton icon="fa-solid fa-house-chimney-user" @click="() => router.push('/')">Home/Smoelenboek</BaggerButton>
+    <BaggerButton icon="fa-solid fa-euro-sign" @click="() => router.push('/turf-choice')">Turflijst</BaggerButton>
+    <BaggerButton icon="fa-regular fa-comments" @click="() => router.push('/quotes')">Quotes</BaggerButton>
+    <BaggerButton icon="fa-solid fa-receipt">Declaratie indienen</BaggerButton>
+    <BaggerButton icon="fa-solid fa-calendar-days" @click="() => router.push('/activiteiten')">Activiteiten planning</BaggerButton>
+    <BaggerButton icon="fa-solid fa-bars" @click="() => router.push('/sitemap')">Hier</BaggerButton>
   </div>
 
   <div id="api" class="flex flex-col gap-y-3">

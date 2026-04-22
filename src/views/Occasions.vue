@@ -72,14 +72,14 @@ function isSelectedOccasion(name: string | undefined, date: string | undefined) 
 <template>
   <div id="wrapper" class="flex flex-col items-center mx-5 my-5 gap-y-10">
 
-    <BaggerButton icon="pi pi-step-forward" :faded="emptySelected" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]"
+    <BaggerButton icon="fa-solid fa-forward" :faded="emptySelected" :isPrimary=false customStyling="w-[40vw] md:w-[15vw]"
                   @click="() => router.push('/turf-check')">Volgende
     </BaggerButton>
 
 
     <div id="occasions" class="flex flex-col items-center gap-y-5">
       <div id="new-occasion">
-        <BaggerButton icon="pi pi-plus" :isPrimary=false customStyling="w-[40vw] md:w-[20vw]" @click="popup = true">
+        <BaggerButton icon="fa-solid fa-plus" :isPrimary=false customStyling="w-[40vw] md:w-[20vw]" @click="popup = true">
           Nieuwe Gelegenheid
         </BaggerButton>
       </div>

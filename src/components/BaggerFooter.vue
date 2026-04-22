@@ -9,10 +9,10 @@ const router = useRouter()
 <template>
   <div id="footer-wrapper" class="flex flex-row w-[80vw] max-h-fit items-center justify-evenly pt-5 border-t-1 border-primary">
     <BaggerButton @click="() => router.push('/')">
-      <i class="pi pi-home"></i>
+      <i class="fa-solid fa-house-chimney-user"></i>
     </BaggerButton>
     <BaggerButton @click="() => router.push('/sitemap')">
-      <i class="pi pi-bars"></i>
+      <i class="fa-solid fa-bars"></i>
     </BaggerButton>
     <BaggerButton >LOGOUT</BaggerButton>
   </div>

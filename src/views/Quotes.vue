@@ -86,7 +86,7 @@ const formatDate = (dateString: string) => {
         :placeholder="new Date().toLocaleDateString()"
         customStyling="w-full"
       />
-      <BaggerButton icon="pi pi-plus">Nieuwe quote toevoegen!</BaggerButton>
+      <BaggerButton icon="fa-solid fa-plus">Nieuwe quote toevoegen!</BaggerButton>
 
     </div>
 

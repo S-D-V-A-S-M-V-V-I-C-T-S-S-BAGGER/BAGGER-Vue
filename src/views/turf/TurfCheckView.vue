@@ -34,12 +34,12 @@ const formatDate = (dateString: string | undefined) => {
     </p>
 
     <div id="buttons" class="w-full md:w-[40vw] flex flex-col gap-y-5">
-      <BaggerButton icon="pi pi-undo" customStyling="w-full" @click="() => { router.push('/turf') }">Pas turven aan</BaggerButton>
+      <BaggerButton icon="fa-solid fa-backward" customStyling="w-full" @click="() => { router.push('/turf') }">Pas turven aan</BaggerButton>
 
       <!--TODO: 20260227 - Add functionality to edit the total amount only -->
-      <BaggerButton icon="pi pi-undo" customStyling="w-full">Pas eindbedrag aan</BaggerButton>
+      <BaggerButton icon="fa-solid fa-backward" customStyling="w-full">Pas eindbedrag aan</BaggerButton>
 
-      <BaggerButton icon="pi pi-undo" customStyling="w-full" @click="() => { router.push('/gelegenheid') }">Pas gelegenheid aan</BaggerButton>
+      <BaggerButton icon="fa-solid fa-backward" customStyling="w-full" @click="() => { router.push('/gelegenheid') }">Pas gelegenheid aan</BaggerButton>
 
       <BaggerButton customStyling="w-full">Klaar!</BaggerButton>
     </div>
