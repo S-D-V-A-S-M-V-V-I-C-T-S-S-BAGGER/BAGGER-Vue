@@ -5,6 +5,7 @@ import BaggerInput from '@/components/BaggerInput.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useActivityStore } from '@/stores/activityStore'
+import BaggerFooter from '@/components/BaggerFooter.vue'
 
 const router = useRouter()
 const activityStore = useActivityStore()
@@ -52,15 +53,17 @@ function resetForm() {
 </script>
 
 <template>
-  <div id="wrapper" class="flex flex-col items-start gap-5 mt-5 mx-5">
+  <div id="wrapper" class="flex flex-col items-center gap-5 mt-5 mx-5">
 
     <div id="title" class="w-full text-center border-b-3 border-secondary max-h-fit pb-3">
       <h1>Hier Kan Je Een Nieuwe Activiteit Aanmaken</h1>
     </div>
 
-    <div id="form" class="w-full grid grid-cols-2 grid-rows-8 auto-rows-max gap-y-5">
+    <div id="form" class="w-full grid grid-cols-2 grid-rows-8 auto-rows-max gap-y-5
+                            md:grid-cols-4 md:grid-rows-7 md:h-[70vh]">
 
-      <div id="name" class="flex flex-col col-start-1 col-span-2 row-start-1 row-span-1">
+      <div id="name" class="flex flex-col col-start-1 col-span-2 row-start-1 row-span-1
+                                md:col-start-2">
         <h6>Naam:</h6>
         <BaggerInput
           v-model="name"
@@ -69,7 +72,8 @@ function resetForm() {
           customStyling="w-full" />
       </div>
 
-      <div id="date" class="flex flex-col col-start-1 col-span-2 row-start-2 row-span-1">
+      <div id="date" class="flex flex-col col-start-1 col-span-2 row-start-2 row-span-1
+                              md:col-start-2">
         <h6>Datum:</h6>
         <BaggerInput
           v-model="date"
@@ -77,7 +81,8 @@ function resetForm() {
           customStyling="w-full" />
       </div>
 
-      <div id="times" class="col-start-1 col-span-2 row-start-3 row-span-1 grid grid-cols-2 grid-rows-1">
+      <div id="times" class="col-start-1 col-span-2 row-start-3 row-span-1 pl-3 grid grid-cols-2 grid-rows-1
+                                md:col-start-2">
         <div id="start" class="flex flex-col col-start-1 col-span-1">
           <h6>Starttijd:</h6>
           <BaggerInput
@@ -94,7 +99,9 @@ function resetForm() {
         </div>
       </div>
 
-      <div id="location" class="col-start-1 col-span-2 row-start-4 row-span-2 grid grid-cols-2 grid-rows-2 gap-y-2">
+<!--      TODO: 20260519 - Have the location maybe be a dropdown with saved locations if wanted and also still be able to add a new one using the form-->
+      <div id="location" class="col-start-1 col-span-2 row-start-4 row-span-2 grid grid-cols-2 grid-rows-2 gap-y-2
+                                  md:col-start-2">
         <div id="location_name" class="flex flex-col col-start-1 col-span-2 row-start-1 row-span-1">
           <h6>Naam van locatie:</h6>
           <BaggerInput
@@ -113,7 +120,8 @@ function resetForm() {
         </div>
       </div>
 
-      <div id="description" class="flex flex-col col-start-1 col-span-2 row-start-6 row-span-1">
+      <div id="description" class="flex flex-col col-start-1 col-span-2 row-start-6 row-span-1
+                                      md:col-start-2">
         <h6>Beschrijving:</h6>
         <BaggerInput
           v-model="description"
@@ -122,11 +130,13 @@ function resetForm() {
           customStyling="w-full" />
       </div>
 
-      <div id="sing-up-options" class="flex flex-col col-start-1 col-span-2 row-start-7 row-span-1">
+      <div id="sing-up-options" class="flex flex-col col-start-1 col-span-2 row-start-7 row-span-1
+                                          md:col-start-2">
         <h6>Hier komt iets met buttons maken voor inschrijven</h6>
       </div>
 
-      <div id="buttons" class="flex flex-row justify-evenly col-start-1 col-span-2 row-start-8 row-span-1">
+      <div id="buttons" class="flex flex-row justify-evenly col-start-1 col-span-2 row-start-8 row-span-1
+                                  md:col-start-2">
         <BaggerButton
           customStyling="w-1/3"
           @click="createActivity"
@@ -134,6 +144,10 @@ function resetForm() {
         <BaggerButton customStyling="w-1/3" @click="resetForm">Reset</BaggerButton>
       </div>
     </div>
+  </div>
+
+  <div id="footer" class="flex flex-col items-center w-full fixed bottom-0 pb-[5vh]">
+    <BaggerFooter />
   </div>
 </template>
 
