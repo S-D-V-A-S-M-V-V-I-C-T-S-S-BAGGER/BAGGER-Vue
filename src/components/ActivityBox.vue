@@ -31,11 +31,9 @@ const getMonthAbbr = (dateString: string | undefined) => {
 
   const date = new Date(dateString)
 
-  const formatted = new Intl.DateTimeFormat('nl-NL', {
+  return new Intl.DateTimeFormat('nl-NL', {
     month: 'short'
-  }).format(date)
-
-  return formatted.toUpperCase()
+  }).format(date).toUpperCase()
 }
 
 const getDay = (dateString: string | undefined) => {
@@ -48,24 +46,35 @@ const getDay = (dateString: string | undefined) => {
   }).format(date)
 }
 
+const getDayOfWeek = (dateString: string | undefined) => {
+  if (!dateString) return "Geen datum =("
+  const date = new Date(dateString)
+  return new Intl.DateTimeFormat('nl-NL', {
+    weekday: 'short'
+  }).format(date).toUpperCase()
+
+}
 
 </script>
 
 <template>
-  <div id="box" class="grid auto-rows-max grid-cols-1 w-full rounded-xl shadow-xl bg-brown-medium
+  <div id="box" class="grid auto-rows-max grid-cols-1 w-full rounded-lg bg-offwhite py-2
                        md:grid-cols-3 md:grid-rows-1 md:auto-cols-max cursor-pointer hover:shadow-2xl transition-shadow duration-200"
        @click="handleActivityClick">
 
     <div id="info-items" class="rows-start-1 row-span-1 flex flex-row gap-x-5 py-3 px-5
                       md:col-start-1 col-span-1">
 
-      <div id="date" class="flex flex-col px-5 justify-center items-center border border-brown-dark
-                            rounded-xl shadow-xl/10 inset-shadow-sm bg-brown-dark">
+      <div id="date" class="flex flex-col px-5 justify-center items-center rounded-lg bg-primary
+       border border-secondary">
         <div id="month">
           <h5>{{ getMonthAbbr(activity.date) }}</h5>
         </div>
         <div id="day">
           <h4>{{ getDay(activity.date) }}</h4>
+        </div>
+        <div id="dayofweek">
+          <h5>{{ getDayOfWeek(activity.date)}}</h5>
         </div>
       </div>
 
@@ -84,13 +93,13 @@ const getDay = (dateString: string | undefined) => {
           {{ participant }}<span v-if="index < activity.participants!.length - 1">, </span>
         </span>
       </p>
-      <p v-else class="text-gray-500">Geen deelnemers</p>
+      <p v-else class="text-gray-500">Nog geen deelnemers</p>
     </div>
 
-    <div id="buttons" class="rows-start-3 row-span-1 flex flex-row gap-x-3 gap-y-3 flex-wrap justify-center py-5
+    <div id="buttons" class="rows-start-3 row-span-1 flex flex-col gap-y-1 items-center py-2 w-full
                       md:col-start-3 md:col-span-1 md:items-center">
       <div v-for="(button, index) in buttons" :key="index">
-        <BaggerButton :icon="button.icon">{{ button.text }}</BaggerButton>
+        <BaggerButton :icon="button.icon" customStyling="w-[80vw]">{{ button.text }}</BaggerButton>
       </div>
     </div>
 

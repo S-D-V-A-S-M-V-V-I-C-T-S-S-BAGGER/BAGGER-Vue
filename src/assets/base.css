@@ -15,15 +15,16 @@
   --color-white-faded: #FFFFFF50;
   --color-green-neon:  #46f20d;
   --color-green-neon-faded: #46f20d50;
+  --color-offwhite: #F1F1EA;
 }
 
 html, body {
   width: 100%;
-  background: var(--color-brown-dark);
+  background: var(--color-brown-medium);
 }
 
 h1 {
-  color: var(--color-primary);
+  color: var(--color-offwhite);
   font-size: xx-large;
   font-weight: bold;
 }
@@ -34,20 +35,19 @@ h2 {
 }
 
 h3 {
-  color: var(--color-primary);
   font-size: large;
-  font-style: italic;
 }
+
 h4 {
-  color: var(--color-primary);
   font-size: x-large;
   font-weight: bold;
   text-transform: uppercase;
 }
+
 h5 {
   color: var(--color-secondary);
   font-size: medium;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 h6 {
@@ -55,10 +55,6 @@ h6 {
   font-size: large;
   font-weight: bold;
   font-style: italic;
-}
-
-p {
-  color: var(--color-blue);
 }
 
 
