@@ -65,7 +65,7 @@ const getDayOfWeek = (dateString: string | undefined) => {
     <div id="info-items" class="rows-start-1 row-span-1 flex flex-row gap-x-5 py-3 px-5
                       md:col-start-1 col-span-1">
 
-      <div id="date" class="flex flex-col px-5 justify-center items-center rounded-lg bg-primary
+      <div id="date" class="flex flex-col px-5 justify-center items-center rounded-lg bg-primary md:px-10
        border border-secondary">
         <div id="month">
           <h5>{{ getMonthAbbr(activity.date) }}</h5>
@@ -99,7 +99,7 @@ const getDayOfWeek = (dateString: string | undefined) => {
     <div id="buttons" class="rows-start-3 row-span-1 flex flex-col gap-y-1 items-center py-2 w-full
                       md:col-start-3 md:col-span-1 md:items-center">
       <div v-for="(button, index) in buttons" :key="index">
-        <BaggerButton :icon="button.icon" customStyling="w-[80vw]">{{ button.text }}</BaggerButton>
+        <BaggerButton :icon="button.icon" customStyling="w-[80vw] md:w-[20vw]">{{ button.text }}</BaggerButton>
       </div>
     </div>
 

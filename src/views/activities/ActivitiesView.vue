@@ -24,7 +24,7 @@ const buttons = ref<{ text: string, icon?: string }[]>([
 
     <!--    Title and new button-->
     <div id="title"
-         class="flex flex-row justify-between w-full bg-brown-dark max-h-fit px-3 py-5">
+         class="flex flex-row justify-between w-full bg-brown-dark max-h-fit px-3 py-5 md:px-20">
       <h1>Activiteiten</h1>
       <BaggerButton icon="fa-regular fa-square-plus" @click="() => router.push('/activiteiten/nieuw')">
         Nieuwe Activiteit!
@@ -33,7 +33,7 @@ const buttons = ref<{ text: string, icon?: string }[]>([
 
     <!--    Filters-->
     <div id="filters" class="grid grid-rows-1 grid-cols-3 gap-x-3 px-2 bg-brown-dark max-h-fit pb-5 w-full mb-5
-                             md:flex md:flex-row md:pb-3 md:px-10">
+                             md:flex md:flex-row md:pb-5 md:px-20">
       <BaggerButton customStyling="md:w-1/7">Komend</BaggerButton>
       <BaggerButton customStyling="md:w-1/7">Geweest</BaggerButton>
       <BaggerButton customStyling="md:w-1/7">Alles</BaggerButton>
@@ -41,7 +41,7 @@ const buttons = ref<{ text: string, icon?: string }[]>([
 
     <!--    Activity list-->
     <div id="list-wrapper" class="w-[90vw] h-[70vh] flex flex-col gap-y-5 overflow-y-auto
-                              md:h-[60vh]">
+                              md:h-[60vh] md:w-[80vw]">
       <div v-for="(activity, index) in activityStore.activities" :key="index">
         <div id="date_name" class="w-full">
           <ActivityBox :activity="activity" :buttons="buttons" />
