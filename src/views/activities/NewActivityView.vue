@@ -120,6 +120,7 @@ function resetForm() {
         </div>
       </div>
 
+<!--      TODO: 20260519 - Make the description field a pop-up that covers the rest and can is Markdown -->
       <div id="description" class="flex flex-col col-start-1 col-span-2 row-start-6 row-span-1
                                       md:col-start-2">
         <h6>Beschrijving:</h6>
